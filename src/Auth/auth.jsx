@@ -494,7 +494,8 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
               >
                 <div>
                   <Text
-                    color="#000"
+                    color="cyan"
+                    // color="#000"
                     size={20}
                     css={{
                       fontWeight: "bold",
@@ -508,7 +509,8 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                     Computer Science Portal
                   </Text>
                   <Text
-                    color="#000"
+                    color="white"
+                    // color="#000"
                     size={19}
                     css={{
                       "@sm": {
