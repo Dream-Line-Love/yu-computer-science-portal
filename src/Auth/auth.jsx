@@ -521,7 +521,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                   <Text
                     color="white"
                     // color="#000"
-                    size={18}
+                    size={17}
                     css={{
                       "@sm": {
                         fontSize: 15,
@@ -643,7 +643,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
               size={11}
               css={{ fontFamily: "monospace", fontStyle: "italic" }}
             >
-              (2022 matriculated, first year first semester CS major @
+              (2022 matriculated; first year first semester CS major at
               University of Yangon)
             </Text>
           </Col>
