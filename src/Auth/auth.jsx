@@ -62,6 +62,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
     setShowStudentPasswordHelper(false);
     setStudentPassword("");
     setShowLoadingForModalEnter(false);
+    setShowLoadingForModalNext(false);
     setStudentModalIsVisible(false);
   };
   const [studentModalView, setStudentModalView] = useState(1);
@@ -97,15 +98,16 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
   const [showStudentHelper, setShowStudentHelper] = useState(false);
   const [showLoadingForModalEnter, setShowLoadingForModalEnter] =
     useState(false);
-  const [showLoadingForModalSignIn, setShowLoadingForModalSignIn] =
-    useState(false);
+  const [showLoadingForModalNext, setShowLoadingForModalNext] = useState(false);
   const [showStudentPasswordHelper, setShowStudentPasswordHelper] =
     useState(false);
   const [studentPassword, setStudentPassword] = useState("");
   const [studentPasswordSet, setStudentPasswordSet] = useState("");
   const [userHasAlreadySignedUp, setUserHasAlreadySignedUp] = useState(false);
   const handleStudentNext1 = async () => {
+    setShowLoadingForModalNext(true);
     if (selectedName === null) {
+      setShowLoadingForModalNext(false);
       setShowStudentHelper(true);
     } else {
       const { data, error } = await supabase
@@ -121,7 +123,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
           setUserHasAlreadySignedUp(true);
           setStudentPasswordSet(data.password);
           setStudentModalView(2);
-          console.log("Already signed up before!", data.password);
+          console.log("Already signed up before!");
           // render already password
         } else {
           setShowStudentHelper(false);
@@ -985,9 +987,17 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                 auto
                 flat
                 onPress={() => handleStudentNext1()}
-                iconRight={<img src="/ArrowRightSquare.svg" />}
+                // iconRight={<img src="/ArrowRightSquare.svg" />}
               >
-                Next
+                {showLoadingForModalNext === false && (
+                  <>
+                    Next &nbsp;
+                    <img src="/ArrowRightSquare.svg" />
+                  </>
+                )}
+                {showLoadingForModalNext === true && (
+                  <Loading type="points" color="currentColor" size="sm" />
+                )}
               </Button>
             </>
           )}
@@ -1002,6 +1012,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                   setStudentPassword("");
                   setUserHasAlreadySignedUp(false);
                   setShowStudentPasswordHelper(false);
+                  setShowLoadingForModalNext(false);
                 }}
                 icon={<img src="ArrowLeftSquare.svg" />}
               >
@@ -1037,6 +1048,8 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                 color="error"
                 onPress={() => {
                   setStudentModalView(2);
+                  setSelectedFile();
+                  setProfilePhotoPlaceholder("/User.svg");
                   setShowStudentHelper(false);
                   setShowLoadingForModalEnter(false);
                 }}
