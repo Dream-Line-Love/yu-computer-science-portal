@@ -57,6 +57,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
     setStudentModalView(1);
     setSelectedName(null);
     setSelectedFile();
+    setProfilePhotoPlaceholder("/User.svg");
     setShowStudentHelper(false);
     setShowStudentPasswordHelper(false);
     setStudentPassword("");
@@ -91,6 +92,8 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
   // Student modal utilities
   const [selectedName, setSelectedName] = useState(null);
   const [selectedFile, setSelectedFile] = useState();
+  const [profilePhotoPlaceholder, setProfilePhotoPlaceholder] =
+    useState("/User.svg");
   const [showStudentHelper, setShowStudentHelper] = useState(false);
   const [showLoadingForModalEnter, setShowLoadingForModalEnter] =
     useState(false);
@@ -924,7 +927,8 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
               // onSubmit={handleStudentSubmit}
             >
               <Avatar
-                src="/User.svg"
+                src={profilePhotoPlaceholder}
+                // src="/User.svg"
                 // src="https://i.pravatar.cc/150?u=a04258114e29026702d"
                 css={{ size: "$40" }}
                 zoomed
@@ -948,7 +952,18 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                   name="studentSubmit"
                   id="studentSubmit"
                   accept="image/png, image/jpeg"
-                  onChange={(event) => setSelectedFile(event.target.files[0])}
+                  onChange={(event) => {
+                    setSelectedFile(event.target.files[0]);
+                    const reader = new FileReader();
+
+                    reader.onload = function (event) {
+                      setProfilePhotoPlaceholder(event.target.result);
+                    };
+
+                    if (event.target.files[0]) {
+                      reader.readAsDataURL(event.target.files[0]);
+                    }
+                  }}
                 />
               </Button>
             </form>
