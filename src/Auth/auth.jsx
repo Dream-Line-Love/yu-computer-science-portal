@@ -358,7 +358,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                 <div>
                   <Text
                     color="#000"
-                    size={17}
+                    size={20}
                     css={{
                       fontWeight: "bold",
                       "@sm": {
@@ -371,7 +371,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                   </Text>
                   <Text
                     color="#000"
-                    size={17}
+                    size={18}
                     css={{
                       "@sm": {
                         fontSize: 16,
@@ -521,7 +521,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                   <Text
                     color="white"
                     // color="#000"
-                    size={17}
+                    size={16}
                     css={{
                       "@sm": {
                         fontSize: 15,
