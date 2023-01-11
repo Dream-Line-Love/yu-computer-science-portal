@@ -183,10 +183,12 @@ export function ModuleHome({
                 color="#000"
                 size={32}
                 css={{
-                  fontFamily: "Cormorant Garamond, monospace",
+                  fontFamily: "Lucida Console",
+                  fontStyle: "italic",
+                  //   textTransform: ""
                   // textTransform: "uppercase",
                   "@sm": {
-                    fontSize: 46,
+                    fontSize: 36,
                   },
                 }}
               >

@@ -26,6 +26,26 @@ a:hover {
 
 /* @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,700&family=Merriweather&family=Open+Sans:wght@800&family=Source+Code+Pro:wght@800&display=swap"); */
 
+@font-face {
+  font-family: Merriweather;
+  src: url(/public/Merriweather-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  src: url(/public/SourceCodePro-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: Open Sans;
+  src: url(/public/OpenSans-VariableFont_wdth\,wght.ttf);
+}
+
+@font-face {
+  font-family: Cormorant Garamond;
+  src: url(/public/OpenSans-VariableFont_wdth\,wght.ttf);
+}
+
 body {
   margin: 0;
   display: flex;

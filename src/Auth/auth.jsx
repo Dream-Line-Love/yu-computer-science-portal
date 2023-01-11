@@ -246,7 +246,8 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
               size={68}
               css={{
                 textGradient: "45deg, $blue600 -20%, $pink600 50%",
-                fontFamily: "Cormorant Garamond, serif",
+                fontFamily: "serif",
+                fontStyle: "italic",
               }}
               weight="bold"
             >
@@ -257,7 +258,8 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
               size={68}
               css={{
                 textGradient: "45deg, $purple600 -20%, $pink600 100%",
-                fontFamily: "Cormorant Garamond, serif",
+                fontFamily: "serif",
+                fontStyle: "italic",
               }}
               weight="bold"
             >
@@ -268,7 +270,8 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
               size={68}
               css={{
                 textGradient: "45deg, $yellow600 -20%, $red600 100%",
-                fontFamily: "Cormorant Garamond, serif",
+                fontFamily: "serif",
+                fontStyle: "italic",
               }}
               weight="bold"
             >

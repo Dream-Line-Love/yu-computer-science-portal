@@ -325,9 +325,11 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                 <Text
                   h1
                   size={68}
+                  color="white"
                   css={{
-                    textGradient: "45deg, $blue600 -20%, $pink600 50%",
-                    fontFamily: "Cormorant Garamond, serif",
+                    // textGradient: "45deg, $blue600 -20%, $pink600 50%",
+                    fontFamily: "serif",
+                    fontStyle: "italic",
                   }}
                   weight="bold"
                 >
@@ -336,9 +338,11 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                 <Text
                   h1
                   size={68}
+                  color="white"
                   css={{
-                    textGradient: "45deg, $purple600 -20%, $pink600 100%",
-                    fontFamily: "Cormorant Garamond, serif",
+                    // textGradient: "45deg, $purple600 -20%, $pink600 100%",
+                    fontFamily: "serif",
+                    fontStyle: "italic",
                   }}
                   weight="bold"
                 >
@@ -347,9 +351,11 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                 <Text
                   h1
                   size={68}
+                  color="white"
                   css={{
-                    textGradient: "45deg, $yellow600 -20%, $red600 100%",
-                    fontFamily: "Cormorant Garamond, serif",
+                    // textGradient: "45deg, $yellow600 -20%, $red600 100%",
+                    fontFamily: "serif",
+                    fontStyle: "italic",
                   }}
                   weight="bold"
                 >
