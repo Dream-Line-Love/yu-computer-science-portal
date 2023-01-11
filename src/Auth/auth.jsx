@@ -236,7 +236,8 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
         paddingBottom: "0vw",
         width: "100vw",
         height: "fit-content",
-        background: "linear-gradient(#E0EAFC, #CFDEF3)",
+        background: "linear-gradient(180deg, white, #E0EAFC 25%, black)",
+        // background: "linear-gradient(#E0EAFC, #CFDEF3)",
       }}
     >
       <Grid.Container css={{ marginLeft: "-5.5vw" }}>
@@ -609,12 +610,13 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
       {/* <Spacer y={2} /> */}
 
       {/* <Spacer y={3} /> */}
-      <Spacer y={5} />
+      <Spacer y={7.5} />
       <Collapse
         shadow
         bordered
         title="DEVELOPER"
         divider={false}
+        // color="white"
         css={{ fontFamily: "monospace" }}
         // onOpen={() => {
         //   window.scrollTo({ bottom: 0, left: 0, behavior: "smooth" });
