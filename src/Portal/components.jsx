@@ -283,6 +283,7 @@ export function ModuleHome({
                   <Button
                     auto
                     light
+                    rounded
                     // flat
                     iconRight={<img src="/ArrowRightSquare.svg" />}
                   ></Button>

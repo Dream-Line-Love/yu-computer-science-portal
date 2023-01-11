@@ -302,7 +302,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
       >
         
       </Text> */}
-      <Spacer y={3} />
+      <Spacer y={5} />
       <Grid.Container gap={2} justify="center">
         <Grid xs={12} sm={6}>
           <Card css={{ w: "100%", h: "400px" }}>
@@ -313,6 +313,9 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                   weight="bold"
                   transform="uppercase"
                   color="black"
+                  css={{
+                    fontFamily: "monospace",
+                  }}
                 >
                   University Laboratory Building
                 </Text>
@@ -512,7 +515,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                   <Text
                     color="white"
                     // color="#000"
-                    size={19}
+                    size={18}
                     css={{
                       "@sm": {
                         fontSize: 15,
@@ -606,7 +609,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
       {/* <Spacer y={2} /> */}
 
       {/* <Spacer y={3} /> */}
-      <Spacer y={7.5} />
+      <Spacer y={5} />
       <Collapse
         shadow
         bordered
@@ -630,7 +633,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
             </Text>
             <Text
               color="#000"
-              size={12.5}
+              size={11}
               css={{ fontFamily: "monospace", fontStyle: "italic" }}
             >
               (2022 matriculated, first year first semester CS major @
