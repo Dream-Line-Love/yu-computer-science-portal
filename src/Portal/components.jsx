@@ -74,6 +74,7 @@ export function ModuleHome({
                 position: "sticky",
                 top: "0rem",
                 zIndex: 100,
+                WebkitBackdropFilter: "saturate(180%) blur(25px)",
                 backdropFilter: "saturate(180%) blur(25px)",
               }
             : {

@@ -372,6 +372,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                     top: "0rem",
                     zIndex: 100,
                     // background: "red",
+                    WebkitBackdropFilter: "saturate(180%) blur(25px)",
                     backdropFilter: "saturate(180%) blur(25px)",
                   }
                 : {
