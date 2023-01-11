@@ -337,7 +337,65 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                 zIndex: 1,
               }}
             >
-              <Row>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <div>
+                  <Text
+                    color="#000"
+                    size={17}
+                    css={{
+                      fontWeight: "bold",
+                      "@sm": {
+                        fontSize: 16,
+                      },
+                      // fontFamily: "monospace",
+                    }}
+                  >
+                    Admin Dashboard
+                  </Text>
+                  <Text
+                    color="#000"
+                    size={17}
+                    css={{
+                      "@sm": {
+                        fontSize: 16,
+                      },
+                      // fontFamily: "monospace",
+                    }}
+                  >
+                    For Faculty and EC's
+                  </Text>
+                </div>
+                <Button
+                  flat
+                  auto
+                  // rounded
+                  color="success"
+                  onPress={handleOpenAdminModal}
+                  icon={<img src="/Login.svg" />}
+                >
+                  {/* <Text
+                    css={{
+                      color: "inherit",
+                      "@sm": {
+                        fontSize: 15,
+                      },
+                    }}
+                    size={12}
+                    weight="bold"
+                    transform="uppercase"
+                  >
+                    Sign In
+                  </Text> */}
+                </Button>
+              </div>
+              {/* <Row>
                 <Col>
                   <Text
                     color="#000"
@@ -388,7 +446,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                     </Button>
                   </Row>
                 </Col>
-              </Row>
+              </Row> */}
             </Card.Footer>
           </Card>
         </Grid>
@@ -426,7 +484,66 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                 zIndex: 1,
               }}
             >
-              <Row>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <div>
+                  <Text
+                    color="#000"
+                    size={20}
+                    css={{
+                      fontWeight: "bold",
+                      "@sm": {
+                        fontSize: 16,
+                      },
+                      // textTransform: "uppercase",
+                      // fontFamily: "monospace",
+                    }}
+                  >
+                    Computer Science Portal
+                  </Text>
+                  <Text
+                    color="#000"
+                    size={19}
+                    css={{
+                      "@sm": {
+                        fontSize: 15,
+                      },
+                      fontFamily: "monospace",
+                    }}
+                  >
+                    For 1Y1S Students
+                  </Text>
+                </div>
+                <Button
+                  flat
+                  auto
+                  // rounded
+                  color="secondary"
+                  onPress={handleOpenStudentModal}
+                  icon={<img src="/Login.svg" />}
+                >
+                  {/* <Text
+                    css={{
+                      color: "inherit",
+                      "@sm": {
+                        fontSize: 15,
+                      },
+                    }}
+                    size={12}
+                    weight="bold"
+                    transform="uppercase"
+                  >
+                    Enter
+                  </Text> */}
+                </Button>
+              </div>
+              {/* <Row>
                 <Col>
                   <Text
                     color="#000"
@@ -477,7 +594,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                     </Button>
                   </Row>
                 </Col>
-              </Row>
+              </Row> */}
             </Card.Footer>
           </Card>
         </Grid>
@@ -501,7 +618,8 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
             size={13}
             css={{ fontFamily: "monospace", fontStyle: "italic" }}
           >
-            (2022 matriculated, first year first semester CS @ YU)
+            (2022 matriculated, first year first semester CS major @ University
+            of Yangon)
           </Text>
         </Col>
       </Row>
