@@ -127,7 +127,7 @@ export function ModuleHome({
           <Text
             h1
             size={28}
-            color={headerIsStuck ? "black" : "white"}
+            color={headerIsStuck ? "black" : "gray"}
             weight="bold"
             css={{
               display: "inline-flex",

@@ -256,7 +256,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
   const [headerIsStuck, setHeaderIsStuck] = useState(false);
   const handleHeaderStyles = () => {
     const position = window.pageYOffset;
-    if (portalView === "Portal Home" && position > 300) {
+    if (portalView === "Portal Home" && position > 550) {
       //   setHeaderStyles({
       //     width: "100vw",
       //     margin: "-6.5vw",
@@ -281,7 +281,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
       //     zIndex: 100,
       //   });
       //   setHeaderColor("white");
-      if (portalView === "Module Home" && position > 100) {
+      if (portalView === "Module Home" && position > 550) {
         setHeaderIsStuck(true);
       } else {
         setHeaderIsStuck(false);
@@ -376,7 +376,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                     marginTop: "11rem",
                     marginLeft: "-8.5vw",
                     paddingLeft: "7.5vw",
-                    paddingBottom: "0vh",
+                    paddingBottom: "0rem",
                     paddingTop: "0.6rem",
                     position: "sticky",
                     top: "0rem",
@@ -390,7 +390,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                     marginTop: "11rem",
                     marginLeft: "-8.5vw",
                     paddingLeft: "7.5vw",
-                    paddingBottom: "0vh",
+                    paddingBottom: "0rem",
                     paddingTop: "0.6rem",
                     position: "sticky",
                     top: "0rem",
