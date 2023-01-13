@@ -313,6 +313,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
         width: "100vw",
         height: "fit-content",
         background: "linear-gradient(#fff, #0D324D 40%, #7F5A83)",
+        userSelect: "none",
         // overflowY: "scroll",
         // overflowX: "hidden",
         // : "5vh",
@@ -495,16 +496,20 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               setModuleInView={setModuleInView}
               useViewController={useViewController}
               coverURL="/mathematics-2.png"
-              boldenedTitle="Maths 1001"
-              fadedTitle="Mathematics"
+              boldenedTitle="Maths"
+              fadedTitle="1001"
+              // boldenedTitle="Maths 1001"
+              // fadedTitle="Mathematics"
             />
             <PortalHomeCard
               module="AM 1001"
               setModuleInView={setModuleInView}
               useViewController={useViewController}
               coverURL="/myanmar-independence-1.jpg"
-              boldenedTitle="Aspects of"
-              fadedTitle="Myanmar 1001"
+              boldenedTitle="AM"
+              fadedTitle="1001"
+              // boldenedTitle="Aspects of"
+              // fadedTitle="Myanmar 1001"
               // boldenedTitle="Aspects of Myanmar"
               // fadedTitle="&nbsp;1001"
             />
@@ -513,8 +518,10 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               setModuleInView={setModuleInView}
               useViewController={useViewController}
               coverURL="/computing-1.jpg"
-              boldenedTitle="CS 1101"
-              fadedTitle="Computing Fundamentals Part (I)"
+              boldenedTitle="CS"
+              fadedTitle="1101"
+              // boldenedTitle="CS 1101"
+              // fadedTitle="Computing Fundamentals Part (I)"
               // fadedTitle="&nbsp;Computing Fundamentals Part (I)"
             />
             <PortalHomeCard
@@ -522,8 +529,10 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               setModuleInView={setModuleInView}
               useViewController={useViewController}
               coverURL="/cs-image-1.jpg"
-              boldenedTitle="CS 1102"
-              fadedTitle="Program Development Methodology I"
+              boldenedTitle="CS"
+              fadedTitle="1102"
+              // boldenedTitle="CS 1102"
+              // fadedTitle="Program Development Methodology I"
             />
             {/* <Grid xs={6} sm={4}>
               <Card

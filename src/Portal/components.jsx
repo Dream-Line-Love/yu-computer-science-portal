@@ -33,12 +33,19 @@ export function PortalHomeCard({
         </Card.Body>
         <Card.Footer css={{ justifyItems: "flex-start" }}>
           <Row wrap="wrap" justify="space-between" align="center">
-            <Text b>{boldenedTitle}</Text>
+            <Text
+              b
+              size={18}
+              css={{ fontFamily: "monospace", textTransform: "uppercase" }}
+            >
+              {boldenedTitle}
+            </Text>
             <Text
               css={{
                 color: "$accents7",
                 fontWeight: "$semibold",
                 fontSize: "$sm",
+                fontFamily: "monospace",
               }}
             >
               {fadedTitle}
