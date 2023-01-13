@@ -237,7 +237,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
       // fluid
       style={{
         padding: "8.5vw",
-        paddingTop: "2.5vw",
+        paddingTop: "1.5rem",
         paddingBottom: "0vw",
         width: "100vw",
         height: "fit-content",
@@ -291,7 +291,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
         </Grid>
         {}
         {showYUPicture === true && (
-          <Grid xs={12} sm={6}>
+          <Grid xs={12} sm={6} css={{ marginTop: "0.5rem" }}>
             <Image src="/uy-1.jpg" />
           </Grid>
         )}
@@ -309,9 +309,29 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
         
       </Text> */}
       <Spacer y={7.5} />
-      <Grid.Container gap={2} justify="center">
-        <Grid xs={12} sm={6}>
-          <Card css={{ w: "100%", h: "400px" }}>
+
+      <Grid.Container
+        gap={2}
+        justify="center"
+        css={{
+          "@md": { paddingLeft: "5rem", paddingRight: "5rem" },
+          "@lg": {
+            paddingLeft: "10rem",
+            paddingRight: "10rem",
+          },
+          "@xl": {
+            paddingLeft: "15rem",
+            paddingRight: "15rem",
+          },
+        }}
+      >
+        <Grid xs={12} sm={6} css={{ marginBottom: "2.5rem" }}>
+          <Card
+            css={{ w: "100%", h: "400px" }}
+            isPressable
+            isHoverable
+            onPress={handleOpenAdminModal}
+          >
             <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
               <Col>
                 <Text
@@ -321,6 +341,19 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                   color="black"
                   css={{
                     fontFamily: "monospace",
+                    "@sm": {
+                      fontSize: 23,
+                      // color: "white",
+                    },
+                    "@md": {
+                      fontSize: 25,
+                      // color: "white",
+                    },
+                    "@xl": {
+                      fontSize: 28,
+                      // fontSize: 30,
+                      color: "white",
+                    },
                   }}
                 >
                   University Laboratory Building
@@ -362,7 +395,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                     css={{
                       fontWeight: "bold",
                       "@sm": {
-                        fontSize: 16,
+                        fontSize: 22,
                       },
                       // fontFamily: "monospace",
                     }}
@@ -374,7 +407,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                     size={18}
                     css={{
                       "@sm": {
-                        fontSize: 16,
+                        fontSize: 20,
                       },
                       // fontFamily: "monospace",
                     }}
@@ -461,7 +494,12 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
           </Card>
         </Grid>
         <Grid xs={12} sm={6}>
-          <Card css={{ w: "100%", h: "400px" }}>
+          <Card
+            css={{ w: "100%", h: "400px" }}
+            isPressable
+            isHoverable
+            onPress={handleOpenStudentModal}
+          >
             <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
               <Col>
                 <Text
@@ -469,6 +507,21 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                   weight="bold"
                   transform="uppercase"
                   color="white"
+                  css={{
+                    "@sm": {
+                      fontSize: 24,
+                      // color: "white",
+                    },
+                    // "@md": {
+                    //   fontSize: 30,
+                    //   // color: "white",
+                    // },
+                    "@xl": {
+                      fontSize: 28,
+                      // fontSize: 32,
+                      // color: "white",
+                    },
+                  }}
                 >
                   Lecture Notes, Sample Code, Assignments, etc.
                 </Text>
@@ -510,7 +563,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                     css={{
                       fontWeight: "bold",
                       "@sm": {
-                        fontSize: 16,
+                        fontSize: 23.5,
                       },
                       // textTransform: "uppercase",
                       // fontFamily: "monospace",
@@ -524,7 +577,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                     size={16}
                     css={{
                       "@sm": {
-                        fontSize: 15,
+                        fontSize: 18,
                       },
                       fontFamily: "monospace",
                     }}
@@ -847,7 +900,13 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
         onClose={handleCloseStudentModal}
       >
         <Modal.Header>
-          <Text b id="modal-title" size={18}>
+          <Text
+            b
+            id="modal-title"
+            // size={18}
+            size={22}
+            css={{ fontFamily: "monospace", textTransform: "uppercase" }}
+          >
             {/* Welcome to
             <br />
             <Text b size={18}>
@@ -857,7 +916,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
               showStudentHelper === false &&
               "Choose your name"}
             {studentModalView === 1 && showStudentHelper === true && (
-              <Text b size={18} color="red">
+              <Text b size={20} color="red">
                 Please pick your name
               </Text>
             )}
@@ -872,33 +931,33 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
             {studentModalView === 2 &&
               showStudentPasswordHelper === true &&
               userHasAlreadySignedUp === false && (
-                <Text b size={18} color="red">
+                <Text b size={20} color="red">
                   Please create a password
                 </Text>
               )}
             {studentModalView === 2 &&
               showStudentPasswordHelper === true &&
               userHasAlreadySignedUp === true && (
-                <Text b size={18} color="red">
+                <Text b size={20} color="red">
                   Please enter your password
                 </Text>
               )}
             {studentModalView === 2 &&
               showStudentPasswordHelper === "Wrong" &&
               userHasAlreadySignedUp === true && (
-                <Text b size={18} color="red">
+                <Text b size={20} color="red">
                   Wrong password!
                 </Text>
               )}
             {studentModalView === 3 && (
               <label htmlFor="studentSubmit">
                 {showStudentHelper !== "No File" && (
-                  <Text b size={18}>
+                  <Text b size={20}>
                     Upload your profile picture
                   </Text>
                 )}
                 {showStudentHelper === "No File" && (
-                  <Text b size={18} color="red">
+                  <Text b size={20} color="red">
                     Please choose a profile picture
                   </Text>
                 )}
@@ -923,6 +982,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
           {studentModalView === 2 && (
             <>
               <Input
+                css={{ paddingTop: "0.5rem" }}
                 clearable
                 bordered
                 fullWidth

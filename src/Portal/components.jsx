@@ -11,6 +11,7 @@ export function PortalHomeCard({
   return (
     <Grid xs={6} sm={4} md={3}>
       <Card
+        isHoverable
         isPressable
         onPress={() => {
           setModuleInView(module);

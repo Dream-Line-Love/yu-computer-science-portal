@@ -369,7 +369,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               headerIsStuck
                 ? {
                     width: "100vw",
-                    marginTop: "12.5vh",
+                    marginTop: "11rem",
                     marginLeft: "-8.5vw",
                     paddingLeft: "7.5vw",
                     paddingBottom: "0vh",
@@ -383,7 +383,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                   }
                 : {
                     width: "100vw",
-                    marginTop: "12.5vh",
+                    marginTop: "11rem",
                     marginLeft: "-8.5vw",
                     paddingLeft: "7.5vw",
                     paddingBottom: "0vh",
@@ -396,6 +396,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
           >
             <Text
               h1
+              // size={28}
               size={25}
               // css={{
               //   textGradient: "45deg, $blue600 -20%, $pink600 50%",
@@ -403,7 +404,11 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               color="white"
               //   color={headerIsStuck ? "black" : "white"}
               weight="bold"
-              css={{ display: "inline-flex" }}
+              css={{
+                display: "inline-flex",
+                fontFamily: "monospace",
+                textTransform: "uppercase",
+              }}
             >
               <Button
                 auto
@@ -441,7 +446,8 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                   // setRenderAs("Auth");
                 }}
                 color={headerIsStuck ? "primary" : "success"}
-                css={{ marginRight: "0.5rem" }}
+                css={{ marginRight: "1rem" }}
+                // css={{ marginRight: "0.5rem" }}
                 // color={headerIsStuck ? "secondary" : "primary"}
               >
                 {/* Go Home */}
