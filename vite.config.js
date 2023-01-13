@@ -41,6 +41,7 @@ export default defineConfig({
             purpose: "any maskable",
           },
         ],
+        start_url: "/localhost:5173",
         display: "standalone",
         background_color: "#ffffff",
         theme_color: "#ffffff",
