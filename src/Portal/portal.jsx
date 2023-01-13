@@ -307,11 +307,12 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
     <div
       style={{
         padding: "8.5vw",
-        paddingTop: "2.5vw",
+        paddingTop: "1.5rem",
+        // paddingTop: "2.5vw",
         paddingBottom: "0vh",
         width: "100vw",
         height: "fit-content",
-        background: "linear-gradient(#0D324D, #7F5A83)",
+        background: "linear-gradient(#fff, #0D324D 40%, #7F5A83)",
         // overflowY: "scroll",
         // overflowX: "hidden",
         // : "5vh",
@@ -325,7 +326,8 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                 <Text
                   h1
                   size={68}
-                  color="white"
+                  // color="white"
+                  color="black"
                   css={{
                     // textGradient: "45deg, $blue600 -20%, $pink600 50%",
                     fontFamily: "serif",
@@ -338,7 +340,8 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                 <Text
                   h1
                   size={68}
-                  color="white"
+                  // color="white"
+                  color="black"
                   css={{
                     // textGradient: "45deg, $purple600 -20%, $pink600 100%",
                     fontFamily: "serif",
@@ -351,7 +354,8 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                 <Text
                   h1
                   size={68}
-                  color="white"
+                  // color="white"
+                  color="black"
                   css={{
                     // textGradient: "45deg, $yellow600 -20%, $red600 100%",
                     fontFamily: "serif",
@@ -397,7 +401,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
             <Text
               h1
               // size={28}
-              size={25}
+              size={22.5}
               // css={{
               //   textGradient: "45deg, $blue600 -20%, $pink600 50%",
               // }}
@@ -446,14 +450,23 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                   // setRenderAs("Auth");
                 }}
                 color={headerIsStuck ? "primary" : "success"}
-                css={{ marginRight: "1rem" }}
+                css={{ marginRight: "0.75rem", marginTop: "0.425rem" }}
+                // css={{ marginRight: "1rem" }}
                 // css={{ marginRight: "0.5rem" }}
                 // color={headerIsStuck ? "secondary" : "primary"}
               >
                 {/* Go Home */}
                 {/* {headerIsStuck ? "Home" : "Go Home"} */}
               </Button>
-              Computer Science Portal
+              <Text
+                h1
+                size={22.5}
+                color="white"
+                weight="bold"
+                css={{ marginTop: "0.575rem" }}
+              >
+                Computer Science Portal
+              </Text>
             </Text>
           </div>
           <Grid.Container

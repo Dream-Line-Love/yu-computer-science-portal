@@ -916,7 +916,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
               showStudentHelper === false &&
               "Choose your name"}
             {studentModalView === 1 && showStudentHelper === true && (
-              <Text b size={20} color="red">
+              <Text b size={18} color="red">
                 Please pick your name
               </Text>
             )}
@@ -931,33 +931,33 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
             {studentModalView === 2 &&
               showStudentPasswordHelper === true &&
               userHasAlreadySignedUp === false && (
-                <Text b size={20} color="red">
+                <Text b size={18} color="red">
                   Please create a password
                 </Text>
               )}
             {studentModalView === 2 &&
               showStudentPasswordHelper === true &&
               userHasAlreadySignedUp === true && (
-                <Text b size={20} color="red">
+                <Text b size={18} color="red">
                   Please enter your password
                 </Text>
               )}
             {studentModalView === 2 &&
               showStudentPasswordHelper === "Wrong" &&
               userHasAlreadySignedUp === true && (
-                <Text b size={20} color="red">
+                <Text b size={18} color="red">
                   Wrong password!
                 </Text>
               )}
             {studentModalView === 3 && (
               <label htmlFor="studentSubmit">
                 {showStudentHelper !== "No File" && (
-                  <Text b size={20}>
+                  <Text b size={18}>
                     Upload your profile picture
                   </Text>
                 )}
                 {showStudentHelper === "No File" && (
-                  <Text b size={20} color="red">
+                  <Text b size={18} color="red">
                     Please choose a profile picture
                   </Text>
                 )}
