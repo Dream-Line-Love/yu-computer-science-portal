@@ -104,6 +104,9 @@ export function ModuleHome({
             auto
             flat
             shadow
+            // light={headerIsStuck ? false : true}
+            // flat={headerIsStuck ? true : false}
+            // shadow={headerIsStuck ? true : false}
             rounded={headerIsStuck ? true : false}
             icon={
               headerIsStuck ? (
@@ -181,6 +184,7 @@ export function ModuleHome({
             >
               <Text
                 b
+                // color="white"
                 color="#000"
                 size={32}
                 css={{
