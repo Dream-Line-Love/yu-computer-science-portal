@@ -308,7 +308,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
       >
         
       </Text> */}
-      <Spacer y={5} />
+      <Spacer y={7.5} />
       <Grid.Container gap={2} justify="center">
         <Grid xs={12} sm={6}>
           <Card css={{ w: "100%", h: "400px" }}>
@@ -615,7 +615,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
       {/* <Spacer y={2} /> */}
 
       {/* <Spacer y={3} /> */}
-      <Spacer y={7.5} />
+      <Spacer y={10} />
       <Collapse
         shadow
         bordered
