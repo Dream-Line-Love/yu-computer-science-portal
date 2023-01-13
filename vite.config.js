@@ -41,7 +41,7 @@ export default defineConfig({
             purpose: "any maskable",
           },
         ],
-        start_url: "/yu-computer-science-portal.vercel.app",
+        start_url: "https://yu-computer-science-portal.vercel.app",
         // start_url: "/localhost:5173",
         display: "standalone",
         background_color: "#ffffff",
