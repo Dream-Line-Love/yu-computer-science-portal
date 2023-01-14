@@ -1,4 +1,4 @@
-import { Button, Card, Grid, Row, Text } from "@nextui-org/react";
+import { Button, Card, Grid, Modal, Row, Text } from "@nextui-org/react";
 
 export function PortalHomeCard({
   module,
@@ -21,30 +21,48 @@ export function PortalHomeCard({
             left: 0,
           });
         }}
+        // css={{ h: "15rem" }}
       >
         <Card.Body css={{ p: 0 }}>
           <Card.Image
             src={coverURL}
             objectFit="cover"
             width="100%"
-            height={140}
+            // height="100%"
+            height={150}
             alt="Module Cover Photo"
           />
         </Card.Body>
-        <Card.Footer css={{ justifyItems: "flex-start" }}>
+        <Card.Footer
+          isBlurred
+          // css={{ justifyItems: "flex-start" }}
+          css={{
+            position: "absolute",
+            bgBlur: "#ffffff66",
+            borderTop: "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
+            bottom: 0,
+            zIndex: 1,
+          }}
+        >
           <Row wrap="wrap" justify="space-between" align="center">
             <Text
               b
               size={18}
-              css={{ fontFamily: "monospace", textTransform: "uppercase" }}
+              css={{
+                fontFamily: "monospace",
+                textTransform: "uppercase",
+                // color: "white",
+              }}
             >
               {boldenedTitle}
             </Text>
             <Text
               css={{
-                color: "$accents7",
+                color: "black",
+                // color: "$accents7",
                 fontWeight: "$semibold",
-                fontSize: "$sm",
+                // fontSize: "$sm",
+                fontSize: "$xs",
                 fontFamily: "monospace",
               }}
             >
@@ -308,6 +326,55 @@ export function ModuleHome({
     </div>
   );
 }
+
+// export function LogoutModal({
+//   logoutModalIsVisible,
+//   handleCloseLogoutModal,
+//   logoutFunction,
+// }) {
+//   return (
+//     <Modal
+//       blur
+//       closeButton
+//       aria-labelledby="modal-title"
+//       open={logoutModalIsVisible}
+//       onClose={handleCloseLogoutModal}
+//       css={{ WebkitUserSelect: "none", userSelect: "none" }}
+//     >
+//       <Modal.Header>
+//         <Text
+//           b
+//           id="modal-title"
+//           size={22}
+//           color="red"
+//           css={{ fontFamily: "monospace", textTransform: "uppercase" }}
+//         >
+//           Are you sure to log out?
+//         </Text>
+//       </Modal.Header>
+//       <Modal.Footer>
+//         <Button
+//           auto
+//           flat
+//           color="success"
+//           onPress={handleCloseLogoutModal}
+//           icon={<img src="/CloseSquare.svg" />}
+//         >
+//           Close
+//         </Button>
+//         <Button
+//           auto
+//           flat
+//           color="error"
+//           onPress={logoutFunction}
+//           iconRight={<img src="/Logout.svg" />}
+//         >
+//           Sign in
+//         </Button>
+//       </Modal.Footer>
+//     </Modal>
+//   );
+// }
 
 {
   /* <Dropdown>

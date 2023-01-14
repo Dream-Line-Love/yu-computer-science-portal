@@ -670,7 +670,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
       {/* <Spacer y={2} /> */}
 
       {/* <Spacer y={3} /> */}
-      <Spacer y={10} />
+      <Spacer y={15} />
       <Collapse
         shadow
         bordered
@@ -814,7 +814,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
         javascript librarie: <br />
         HTML, CSS, Javascript
       </Text> */}
-      <Spacer y={1} />
+      <Spacer y={3} />
       <Modal
         blur
         closeButton

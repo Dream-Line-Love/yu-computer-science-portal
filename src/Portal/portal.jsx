@@ -9,6 +9,7 @@ import {
   Row,
   Dropdown,
   Badge,
+  Modal,
 } from "@nextui-org/react";
 import { useEffect, useRef, useState } from "react";
 import { supabase } from "../../supabase.config";
@@ -303,6 +304,23 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
   // Tag Filter Logic for Module Home
   // const [selectedTagInModuleHome, setSelectedTagInModuleHome] = useState("");
 
+  // Logout Modal Ref
+  const [logoutModalIsVisible, setLogoutModalIsVisible] = useState(false);
+  const handleOpenLogoutModal = () => {
+    console.log("It reached here");
+    setLogoutModalIsVisible(true);
+  };
+  const handleCloseLogoutModal = () => {
+    setLogoutModalIsVisible(false);
+  };
+  // const logoutFunction = () => {
+  //   window.scrollTo({ top: 0, left: 0 });
+  //   localStorage.removeItem("csPortalUser");
+  //   setTimeout(() => {
+  //     window.location.reload();
+  //   }, 1000);
+  // };
+
   return (
     <div
       style={{
@@ -440,11 +458,13 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                   if (headerIsStuck) {
                     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                   } else {
-                    window.scrollTo({ top: 0, left: 0 });
-                    localStorage.removeItem("csPortalUser");
-                    setTimeout(() => {
-                      window.location.reload();
-                    }, 1000);
+                    console.log("it reached here!");
+                    handleOpenLogoutModal();
+                    // window.scrollTo({ top: 0, left: 0 });
+                    // localStorage.removeItem("csPortalUser");
+                    // setTimeout(() => {
+                    //   window.location.reload();
+                    // }, 1000);
                   }
                   // localStorage.removeItem("csPortalUser");
                   // window.scrollTo({ top: 0, left: 0 });
@@ -462,7 +482,8 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               </Button>
               <Text
                 h1
-                size={22.5}
+                size={18}
+                // size={22.5}
                 color="white"
                 weight="bold"
                 css={{ marginTop: "0.575rem" }}
@@ -1068,6 +1089,58 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
       {/* <Spacer y={5} /> */}
       {/* <Spacer y={5} /> */}
       <Spacer y={0.5} />
+      {/* <LogoutModal
+        logoutModalIsVisible={logoutModalIsVisible}
+        handleCloseLogoutModal={handleCloseLogoutModal}
+        logoutFunction={logoutFunction}
+      /> */}
+      <Modal
+        blur
+        closeButton
+        aria-labelledby="modal-title"
+        open={logoutModalIsVisible}
+        onClose={handleCloseLogoutModal}
+        css={{ WebkitUserSelect: "none", userSelect: "none" }}
+      >
+        <Modal.Header>
+          <Text
+            b
+            id="modal-title"
+            size={18}
+            color="red"
+            css={{ fontFamily: "monospace" }}
+          >
+            Are you sure you want to sign out?
+          </Text>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button
+            auto
+            flat
+            color="success"
+            onPress={handleCloseLogoutModal}
+            icon={<img src="/CloseSquare.svg" />}
+          >
+            Close
+          </Button>
+          <Button
+            auto
+            flat
+            color="error"
+            iconRight={<img src="/Logout.svg" />}
+            onPress={() => {
+              window.scrollTo({ top: 0, left: 0 });
+              localStorage.removeItem("csPortalUser");
+              setTimeout(() => {
+                window.location.reload();
+              }, 1000);
+            }}
+            // onPress={logoutFunction}
+          >
+            Sign Out
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
