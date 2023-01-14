@@ -310,7 +310,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
       >
         
       </Text> */}
-      <Spacer y={7.5} />
+      <Spacer y={6.5} />
 
       <Grid.Container
         gap={2}

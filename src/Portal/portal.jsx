@@ -258,7 +258,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
   const [headerStyles, setHeaderStyles] = useState({
     headerDivStyles: {
       width: "100vw",
-      marginTop: "9rem",
+      marginTop: "8.5rem",
       marginLeft: "-8.5vw",
       paddingLeft: "7.5vw",
       paddingBottom: "0rem",
@@ -274,7 +274,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
       setHeaderStyles({
         headerDivStyles: {
           width: "100vw",
-          marginTop: "9rem",
+          marginTop: "8.5rem",
           marginLeft: "-8.5vw",
           paddingLeft: "7.5vw",
           paddingBottom: "0rem",
@@ -347,7 +347,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               setHeaderStyles({
                 headerDivStyles: {
                   width: "100vw",
-                  marginTop: "9rem",
+                  marginTop: "8.5rem",
                   marginLeft: "-8.5vw",
                   paddingLeft: "7.5vw",
                   paddingBottom: "0rem",
