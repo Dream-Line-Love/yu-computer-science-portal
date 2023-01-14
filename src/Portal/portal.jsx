@@ -255,37 +255,112 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
 
   // Header Stuck and Unstuck Logic
   const [headerIsStuck, setHeaderIsStuck] = useState(false);
+  const [headerStyles, setHeaderStyles] = useState({
+    headerDivStyles: {
+      width: "100vw",
+      marginTop: "11rem",
+      marginLeft: "-8.5vw",
+      paddingLeft: "7.5vw",
+      paddingBottom: "0rem",
+      paddingTop: "0.6rem",
+      position: "sticky",
+      top: "0rem",
+      zIndex: 100,
+    },
+  });
   const handleHeaderStyles = () => {
     const position = window.pageYOffset;
     if (portalView === "Portal Home" && position > 550) {
-      //   setHeaderStyles({
-      //     width: "100vw",
-      //     margin: "-6.5vw",
-      //     paddingLeft: "7.5vw",
-      //     paddingBottom: "1.5vh",
-      //     position: "sticky",
-      //     top: 0,
-      //     zIndex: 100,
-      //     // background: "red",
-      //     backdropFilter: "saturate(180%) blur(10px)",
-      //   });
-      //   setHeaderColor("black");
+      setHeaderStyles({
+        headerDivStyles: {
+          width: "100vw",
+          marginTop: "11rem",
+          marginLeft: "-8.5vw",
+          paddingLeft: "7.5vw",
+          paddingBottom: "0rem",
+          paddingTop: "0.6rem",
+          position: "sticky",
+          top: "0rem",
+          zIndex: 100,
+          // background: "red",
+          WebkitBackdropFilter: "saturate(180%) blur(25px)",
+          backdropFilter: "saturate(180%) blur(25px)",
+        },
+      });
       setHeaderIsStuck(true);
     } else {
-      //   setHeaderStyles({
-      //     width: "100vw",
-      //     margin: "-6.5vw",
-      //     paddingLeft: "7.5vw",
-      //     paddingBottom: "1.5vh",
-      //     position: "sticky",
-      //     top: 0,
-      //     zIndex: 100,
-      //   });
-      //   setHeaderColor("white");
-      if (portalView === "Module Home" && position > 550) {
+      if (portalView === "Module Home" && position > 450) {
+        setHeaderStyles({
+          headerDivStyles: {
+            width: "100vw",
+            marginTop: "-0.25rem",
+            marginLeft: "-8.5vw",
+            paddingLeft: "7.5vw",
+            paddingBottom: "0vh",
+            paddingTop: "0.35rem",
+            position: "sticky",
+            top: "0rem",
+            zIndex: 100,
+            WebkitBackdropFilter: "saturate(180%) blur(25px)",
+            backdropFilter: "saturate(180%) blur(25px)",
+          },
+          moduleHomeHeaderModuleNumberTextColor: "black",
+        });
         setHeaderIsStuck(true);
       } else {
-        setHeaderIsStuck(false);
+        if (portalView === "Module Home" && position > 50) {
+          setHeaderStyles({
+            headerDivStyles: {
+              width: "100vw",
+              marginTop: "-0.25rem",
+              marginLeft: "-8.5vw",
+              paddingLeft: "7.5vw",
+              paddingBottom: "0vh",
+              paddingTop: "0.35rem",
+              position: "sticky",
+              top: "0rem",
+              zIndex: 100,
+              WebkitBackdropFilter: "saturate(180%) blur(25px)",
+              backdropFilter: "saturate(180%) blur(25px)",
+            },
+            moduleHomeHeaderModuleNumberTextColor: "white",
+          });
+        } else {
+          if (portalView === "Module Home") {
+            setHeaderStyles({
+              headerDivStyles: {
+                width: "100vw",
+                marginTop: "-0.25rem",
+                marginLeft: "-8.5vw",
+                paddingLeft: "7.5vw",
+                paddingBottom: "0vh",
+                paddingTop: "0.35rem",
+                position: "sticky",
+                top: "0rem",
+                zIndex: 100,
+              },
+              moduleHomeHeaderModuleNumberTextColor: "gray",
+            });
+            setHeaderIsStuck(false);
+          } else {
+            if (portalView === "Portal Home") {
+              setHeaderStyles({
+                headerDivStyles: {
+                  width: "100vw",
+                  marginTop: "11rem",
+                  marginLeft: "-8.5vw",
+                  paddingLeft: "7.5vw",
+                  paddingBottom: "0rem",
+                  paddingTop: "0.6rem",
+                  position: "sticky",
+                  top: "0rem",
+                  zIndex: 100,
+                },
+              });
+              setHeaderIsStuck(false);
+            }
+          }
+        }
       }
     }
   };
@@ -389,34 +464,35 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
             </Grid>
           </Grid.Container>
           <div
-            style={
-              headerIsStuck
-                ? {
-                    width: "100vw",
-                    marginTop: "11rem",
-                    marginLeft: "-8.5vw",
-                    paddingLeft: "7.5vw",
-                    paddingBottom: "0rem",
-                    paddingTop: "0.6rem",
-                    position: "sticky",
-                    top: "0rem",
-                    zIndex: 100,
-                    // background: "red",
-                    WebkitBackdropFilter: "saturate(180%) blur(25px)",
-                    backdropFilter: "saturate(180%) blur(25px)",
-                  }
-                : {
-                    width: "100vw",
-                    marginTop: "11rem",
-                    marginLeft: "-8.5vw",
-                    paddingLeft: "7.5vw",
-                    paddingBottom: "0rem",
-                    paddingTop: "0.6rem",
-                    position: "sticky",
-                    top: "0rem",
-                    zIndex: 100,
-                  }
-            }
+            style={headerStyles.headerDivStyles}
+            // style={
+            //   headerIsStuck
+            //     ? {
+            //         width: "100vw",
+            //         marginTop: "11rem",
+            //         marginLeft: "-8.5vw",
+            //         paddingLeft: "7.5vw",
+            //         paddingBottom: "0rem",
+            //         paddingTop: "0.6rem",
+            //         position: "sticky",
+            //         top: "0rem",
+            //         zIndex: 100,
+            //         // background: "red",
+            //         WebkitBackdropFilter: "saturate(180%) blur(25px)",
+            //         backdropFilter: "saturate(180%) blur(25px)",
+            //       }
+            //     : {
+            //         width: "100vw",
+            //         marginTop: "11rem",
+            //         marginLeft: "-8.5vw",
+            //         paddingLeft: "7.5vw",
+            //         paddingBottom: "0rem",
+            //         paddingTop: "0.6rem",
+            //         position: "sticky",
+            //         top: "0rem",
+            //         zIndex: 100,
+            //       }
+            // }
           >
             <Text
               h1
@@ -786,6 +862,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
       {portalView === "Module Home" && moduleInView === "Myan 1001" && (
         <ModuleHome
           headerIsStuck={headerIsStuck}
+          headerStyles={headerStyles}
           setModuleInView={setModuleInView}
           useViewController={useViewController}
           module_number="Myan 1001"
@@ -798,6 +875,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
       {portalView === "Module Home" && moduleInView === "Eng 1001" && (
         <ModuleHome
           headerIsStuck={headerIsStuck}
+          headerStyles={headerStyles}
           setModuleInView={setModuleInView}
           useViewController={useViewController}
           module_number="Eng 1001"
@@ -810,6 +888,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
       {portalView === "Module Home" && moduleInView === "Maths 1001" && (
         <ModuleHome
           headerIsStuck={headerIsStuck}
+          headerStyles={headerStyles}
           setModuleInView={setModuleInView}
           useViewController={useViewController}
           module_number="Maths 1001"
@@ -822,6 +901,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
       {portalView === "Module Home" && moduleInView === "AM 1001" && (
         <ModuleHome
           headerIsStuck={headerIsStuck}
+          headerStyles={headerStyles}
           setModuleInView={setModuleInView}
           useViewController={useViewController}
           module_number="AM 1001"
@@ -834,6 +914,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
       {portalView === "Module Home" && moduleInView === "CS 1101" && (
         <ModuleHome
           headerIsStuck={headerIsStuck}
+          headerStyles={headerStyles}
           setModuleInView={setModuleInView}
           useViewController={useViewController}
           module_number="CS 1101"
@@ -846,6 +927,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
       {portalView === "Module Home" && moduleInView === "CS 1102" && (
         <ModuleHome
           headerIsStuck={headerIsStuck}
+          headerStyles={headerStyles}
           setModuleInView={setModuleInView}
           useViewController={useViewController}
           module_number="CS 1102"
@@ -1120,6 +1202,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
             color="success"
             onPress={handleCloseLogoutModal}
             icon={<img src="/CloseSquare.svg" />}
+            css={{ color: "black" }}
           >
             Close
           </Button>
@@ -1135,6 +1218,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                 window.location.reload();
               }, 1000);
             }}
+            css={{ color: "black" }}
             // onPress={logoutFunction}
           >
             Sign Out

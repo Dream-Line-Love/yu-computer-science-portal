@@ -77,6 +77,7 @@ export function PortalHomeCard({
 
 export function ModuleHome({
   headerIsStuck,
+  headerStyles,
   setModuleInView,
   useViewController,
   module_number,
@@ -88,33 +89,34 @@ export function ModuleHome({
   return (
     <div>
       <div
-        style={
-          headerIsStuck
-            ? {
-                width: "100vw",
-                marginTop: "-0.25rem",
-                marginLeft: "-8.5vw",
-                paddingLeft: "7.5vw",
-                paddingBottom: "0vh",
-                paddingTop: "0.35rem",
-                position: "sticky",
-                top: "0rem",
-                zIndex: 100,
-                WebkitBackdropFilter: "saturate(180%) blur(25px)",
-                backdropFilter: "saturate(180%) blur(25px)",
-              }
-            : {
-                width: "100vw",
-                marginTop: "-0.25rem",
-                marginLeft: "-8.5vw",
-                paddingLeft: "7.5vw",
-                paddingBottom: "0vh",
-                paddingTop: "0.35rem",
-                position: "sticky",
-                top: "0rem",
-                zIndex: 100,
-              }
-        }
+        style={headerStyles.headerDivStyles}
+        // style={
+        //   headerIsStuck
+        //     ? {
+        //         width: "100vw",
+        //         marginTop: "-0.25rem",
+        //         marginLeft: "-8.5vw",
+        //         paddingLeft: "7.5vw",
+        //         paddingBottom: "0vh",
+        //         paddingTop: "0.35rem",
+        //         position: "sticky",
+        //         top: "0rem",
+        //         zIndex: 100,
+        //         WebkitBackdropFilter: "saturate(180%) blur(25px)",
+        //         backdropFilter: "saturate(180%) blur(25px)",
+        //       }
+        //     : {
+        //         width: "100vw",
+        //         marginTop: "-0.25rem",
+        //         marginLeft: "-8.5vw",
+        //         paddingLeft: "7.5vw",
+        //         paddingBottom: "0vh",
+        //         paddingTop: "0.35rem",
+        //         position: "sticky",
+        //         top: "0rem",
+        //         zIndex: 100,
+        //       }
+        // }
       >
         <div
           style={{
@@ -155,7 +157,8 @@ export function ModuleHome({
           <Text
             h1
             size={28}
-            color={headerIsStuck ? "black" : "gray"}
+            // color={headerIsStuck ? "black" : "gray"}
+            color={headerStyles.moduleHomeHeaderModuleNumberTextColor}
             weight="bold"
             css={{
               display: "inline-flex",

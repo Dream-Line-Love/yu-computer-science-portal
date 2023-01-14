@@ -956,12 +956,17 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
             {studentModalView === 3 && (
               <label htmlFor="studentSubmit">
                 {showStudentHelper !== "No File" && (
-                  <Text b size={18}>
+                  <Text b size={22} css={{ textTransform: "uppercase" }}>
                     Upload your profile picture
                   </Text>
                 )}
                 {showStudentHelper === "No File" && (
-                  <Text b size={18} color="red">
+                  <Text
+                    b
+                    size={22}
+                    css={{ textTransform: "uppercase" }}
+                    color="red"
+                  >
                     Please choose a profile picture
                   </Text>
                 )}
@@ -1058,6 +1063,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                 color="error"
                 onPress={handleCloseStudentModal}
                 icon={<img src="/CloseSquare.svg" />}
+                css={{ color: "black" }}
               >
                 Close
               </Button>
@@ -1065,6 +1071,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                 auto
                 flat
                 onPress={() => handleStudentNext1()}
+                css={{ color: "black" }}
                 // iconRight={<img src="/ArrowRightSquare.svg" />}
               >
                 {showLoadingForModalNext === false && (
@@ -1093,6 +1100,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                   setShowLoadingForModalNext(false);
                 }}
                 icon={<img src="ArrowLeftSquare.svg" />}
+                css={{ color: "black" }}
               >
                 Back
               </Button>
@@ -1102,6 +1110,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                   flat
                   onPress={() => handleStudentNext2()}
                   iconRight={<img src="/ArrowRightSquare.svg" />}
+                  css={{ color: "black" }}
                 >
                   Next
                 </Button>
@@ -1112,6 +1121,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                   flat
                   onPress={() => handleStudentSignIn()}
                   iconRight={<img src="/Login.svg" />}
+                  css={{ color: "black" }}
                 >
                   Sign In
                 </Button>
@@ -1132,6 +1142,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                   setShowLoadingForModalEnter(false);
                 }}
                 icon={<img src="ArrowLeftSquare.svg" />}
+                css={{ color: "black" }}
               >
                 Back
               </Button>
@@ -1139,6 +1150,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
                 auto
                 flat
                 onPress={handleStudentSubmit}
+                css={{ color: "black" }}
                 // iconRight={<img src="/Login.svg" />}
               >
                 {showLoadingForModalEnter === false && (
