@@ -242,8 +242,8 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
         width: "100vw",
         height: "fit-content",
         background: "linear-gradient(180deg, white, #E0EAFC 25%, black)",
-        userSelect: "none",
         WebkitUserSelect: "none",
+        userSelect: "none",
         // background: "linear-gradient(#E0EAFC, #CFDEF3)",
       }}
     >
@@ -821,7 +821,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
         aria-labelledby="modal-title"
         open={adminModalIsVisible}
         onClose={handleCloseAdminModal}
-        css={{ userSelect: "none", WebkitUserSelect: "none" }}
+        css={{ WebkitUserSelect: "none", userSelect: "none" }}
       >
         <Modal.Header>
           <Text id="modal-title" size={18}>
@@ -901,7 +901,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
         aria-labelledby="modal-title"
         open={studentModalIsVisible}
         onClose={handleCloseStudentModal}
-        css={{ userSelect: "none", WebkitUserSelect: "none" }}
+        css={{ WebkitUserSelect: "none", userSelect: "none" }}
       >
         <Modal.Header>
           <Text
