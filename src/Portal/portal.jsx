@@ -258,7 +258,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
   const [headerStyles, setHeaderStyles] = useState({
     headerDivStyles: {
       width: "100vw",
-      marginTop: "8.5rem",
+      marginTop: "8rem",
       marginLeft: "-8.5vw",
       paddingLeft: "7.5vw",
       paddingBottom: "0rem",
@@ -274,7 +274,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
       setHeaderStyles({
         headerDivStyles: {
           width: "100vw",
-          marginTop: "8.5rem",
+          marginTop: "8rem",
           marginLeft: "-8.5vw",
           paddingLeft: "7.5vw",
           paddingBottom: "0rem",
@@ -289,7 +289,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
       });
       setHeaderIsStuck(true);
     } else {
-      if (portalView === "Module Home" && position > 490) {
+      if (portalView === "Module Home" && position > 525) {
         setHeaderStyles({
           headerDivStyles: {
             width: "100vw",
@@ -308,7 +308,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
         });
         setHeaderIsStuck(true);
       } else {
-        if (portalView === "Module Home" && position > 95) {
+        if (portalView === "Module Home" && position > 100) {
           setHeaderStyles({
             headerDivStyles: {
               width: "100vw",
@@ -347,7 +347,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               setHeaderStyles({
                 headerDivStyles: {
                   width: "100vw",
-                  marginTop: "8.5rem",
+                  marginTop: "8rem",
                   marginLeft: "-8.5vw",
                   paddingLeft: "7.5vw",
                   paddingBottom: "0rem",
@@ -356,6 +356,17 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                   top: "0rem",
                   zIndex: 100,
                 },
+                // headerDivStyles: {
+                //   width: "100vw",
+                //   marginTop: "8rem",
+                //   marginLeft: "-8.5vw",
+                //   paddingLeft: "7.5vw",
+                //   paddingBottom: "0rem",
+                //   paddingTop: "0.6rem",
+                //   position: "sticky",
+                //   top: "0rem",
+                //   zIndex: 100,
+                // },
               });
               setHeaderIsStuck(false);
             }
@@ -575,6 +586,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
           >
             <PortalHomeCard
               module="Myan 1001"
+              setHeaderStyles={setHeaderStyles}
               setModuleInView={setModuleInView}
               useViewController={useViewController}
               coverURL="/pathein-umbrella-1.jpg"
@@ -583,6 +595,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
             />
             <PortalHomeCard
               module="Eng 1001"
+              setHeaderStyles={setHeaderStyles}
               setModuleInView={setModuleInView}
               useViewController={useViewController}
               coverURL="/english-language-1.jpg"
@@ -591,6 +604,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
             />
             <PortalHomeCard
               module="Maths 1001"
+              setHeaderStyles={setHeaderStyles}
               setModuleInView={setModuleInView}
               useViewController={useViewController}
               coverURL="/mathematics-2.png"
@@ -601,6 +615,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
             />
             <PortalHomeCard
               module="AM 1001"
+              setHeaderStyles={setHeaderStyles}
               setModuleInView={setModuleInView}
               useViewController={useViewController}
               coverURL="/myanmar-independence-1.jpg"
@@ -613,6 +628,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
             />
             <PortalHomeCard
               module="CS 1101"
+              setHeaderStyles={setHeaderStyles}
               setModuleInView={setModuleInView}
               useViewController={useViewController}
               coverURL="/computing-1.jpg"
@@ -624,6 +640,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
             />
             <PortalHomeCard
               module="CS 1102"
+              setHeaderStyles={setHeaderStyles}
               setModuleInView={setModuleInView}
               useViewController={useViewController}
               coverURL="/cs-image-1.jpg"

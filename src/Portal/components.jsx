@@ -2,6 +2,7 @@ import { Button, Card, Grid, Modal, Row, Text } from "@nextui-org/react";
 
 export function PortalHomeCard({
   module,
+  setHeaderStyles,
   setModuleInView,
   useViewController,
   coverURL,
@@ -20,6 +21,20 @@ export function PortalHomeCard({
             top: 0,
             left: 0,
           });
+          setHeaderStyles({
+            headerDivStyles: {
+              width: "100vw",
+              marginTop: "-0.25rem",
+              marginLeft: "-8.5vw",
+              paddingLeft: "7.5vw",
+              paddingBottom: "0vh",
+              paddingTop: "0.35rem",
+              position: "sticky",
+              top: "0rem",
+              zIndex: 100,
+            },
+          });
+          setHeaderIsStuck(false);
         }}
         // css={{ h: "15rem" }}
       >
@@ -263,10 +278,14 @@ export function ModuleHome({
           </Card.Footer>
         </Card>
       </div>
+
+      <div></div>
+
       <Grid.Container
         css={{
-          marginTop: "15vh",
-          marginBottom: "5vh",
+          marginTop: "3rem",
+          // marginTop: "15vh",
+          marginBottom: "2.5rem",
           //   background: "red",
         }}
         gap={2.5}
