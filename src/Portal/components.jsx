@@ -4,6 +4,7 @@ import { useState } from "react";
 export function PortalHomeCard({
   module,
   setHeaderStyles,
+  setHeaderIsStuck,
   setModuleInView,
   useViewController,
   coverURL,
@@ -50,15 +51,15 @@ export function PortalHomeCard({
           />
         </Card.Body>
         <Card.Footer
-          isBlurred
-          // css={{ justifyItems: "flex-start" }}
-          css={{
-            position: "absolute",
-            bgBlur: "#ffffff66",
-            borderTop: "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
-            bottom: 0,
-            zIndex: 1,
-          }}
+          // isBlurred
+          css={{ justifyItems: "flex-start" }}
+          // css={{
+          //   position: "absolute",
+          //   bgBlur: "#ffffff66",
+          //   borderTop: "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
+          //   bottom: 0,
+          //   zIndex: 1,
+          // }}
         >
           <Row wrap="wrap" justify="space-between" align="center">
             <Text
@@ -74,11 +75,11 @@ export function PortalHomeCard({
             </Text>
             <Text
               css={{
-                color: "black",
-                // color: "$accents7",
+                // color: "black",
+                color: "$accents7",
                 fontWeight: "$semibold",
-                // fontSize: "$sm",
-                fontSize: "$xs",
+                fontSize: "$sm",
+                // fontSize: "$xs",
                 fontFamily: "monospace",
               }}
             >

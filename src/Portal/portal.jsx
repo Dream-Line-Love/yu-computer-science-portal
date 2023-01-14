@@ -591,10 +591,10 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                 zoomed
                 css={{
                   marginLeft: "0.8rem",
-                  // marginTop: "0.4rem",
-                  marginTop: "0.35rem",
-                  // size: "$15",
-                  size: "$16",
+                  marginTop: "0.375rem",
+                  // marginTop: "0.35rem",
+                  size: "$15",
+                  // size: "$16",
                 }}
               />
             </Text>
