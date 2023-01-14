@@ -313,6 +313,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
         width: "100vw",
         height: "fit-content",
         background: "linear-gradient(#fff, #0D324D 40%, #7F5A83)",
+        WebkitUserSelect: "none",
         userSelect: "none",
         // overflowY: "scroll",
         // overflowX: "hidden",
