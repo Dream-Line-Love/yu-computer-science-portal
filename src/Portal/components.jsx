@@ -78,6 +78,7 @@ export function PortalHomeCard({
 export function ModuleHome({
   headerIsStuck,
   headerStyles,
+  setHeaderStyles,
   setModuleInView,
   useViewController,
   module_number,
@@ -149,6 +150,19 @@ export function ModuleHome({
                 window.scrollTo({ top: 0, left: 0 });
                 setModuleInView("");
                 useViewController("Portal Home");
+                setHeaderStyles({
+                  headerDivStyles: {
+                    width: "100vw",
+                    marginTop: "9rem",
+                    marginLeft: "-8.5vw",
+                    paddingLeft: "7.5vw",
+                    paddingBottom: "0rem",
+                    paddingTop: "0.6rem",
+                    position: "sticky",
+                    top: "0rem",
+                    zIndex: 100,
+                  },
+                });
               }
             }}
             color={headerIsStuck ? "primary" : "success"}

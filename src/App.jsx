@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 // import { db } from "../firebase.config";
 import "./App.css";
-import { Auth } from "./Auth/auth";
 import { Portal } from "./Portal/portal";
 import { supabase } from "../supabase.config";
+import { Auth } from "./Auth/auth";
 
 function App() {
   const [renderAs, setRenderAs] = useState("");

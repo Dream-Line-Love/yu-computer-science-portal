@@ -258,7 +258,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
   const [headerStyles, setHeaderStyles] = useState({
     headerDivStyles: {
       width: "100vw",
-      marginTop: "11rem",
+      marginTop: "9rem",
       marginLeft: "-8.5vw",
       paddingLeft: "7.5vw",
       paddingBottom: "0rem",
@@ -274,7 +274,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
       setHeaderStyles({
         headerDivStyles: {
           width: "100vw",
-          marginTop: "11rem",
+          marginTop: "9rem",
           marginLeft: "-8.5vw",
           paddingLeft: "7.5vw",
           paddingBottom: "0rem",
@@ -289,7 +289,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
       });
       setHeaderIsStuck(true);
     } else {
-      if (portalView === "Module Home" && position > 450) {
+      if (portalView === "Module Home" && position > 490) {
         setHeaderStyles({
           headerDivStyles: {
             width: "100vw",
@@ -308,7 +308,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
         });
         setHeaderIsStuck(true);
       } else {
-        if (portalView === "Module Home" && position > 50) {
+        if (portalView === "Module Home" && position > 95) {
           setHeaderStyles({
             headerDivStyles: {
               width: "100vw",
@@ -347,7 +347,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               setHeaderStyles({
                 headerDivStyles: {
                   width: "100vw",
-                  marginTop: "11rem",
+                  marginTop: "9rem",
                   marginLeft: "-8.5vw",
                   paddingLeft: "7.5vw",
                   paddingBottom: "0rem",
@@ -863,6 +863,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
         <ModuleHome
           headerIsStuck={headerIsStuck}
           headerStyles={headerStyles}
+          setHeaderStyles={setHeaderStyles}
           setModuleInView={setModuleInView}
           useViewController={useViewController}
           module_number="Myan 1001"
@@ -876,6 +877,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
         <ModuleHome
           headerIsStuck={headerIsStuck}
           headerStyles={headerStyles}
+          setHeaderStyles={setHeaderStyles}
           setModuleInView={setModuleInView}
           useViewController={useViewController}
           module_number="Eng 1001"
@@ -889,6 +891,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
         <ModuleHome
           headerIsStuck={headerIsStuck}
           headerStyles={headerStyles}
+          setHeaderStyles={setHeaderStyles}
           setModuleInView={setModuleInView}
           useViewController={useViewController}
           module_number="Maths 1001"
@@ -902,6 +905,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
         <ModuleHome
           headerIsStuck={headerIsStuck}
           headerStyles={headerStyles}
+          setHeaderStyles={setHeaderStyles}
           setModuleInView={setModuleInView}
           useViewController={useViewController}
           module_number="AM 1001"
@@ -915,6 +919,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
         <ModuleHome
           headerIsStuck={headerIsStuck}
           headerStyles={headerStyles}
+          setHeaderStyles={setHeaderStyles}
           setModuleInView={setModuleInView}
           useViewController={useViewController}
           module_number="CS 1101"
@@ -928,6 +933,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
         <ModuleHome
           headerIsStuck={headerIsStuck}
           headerStyles={headerStyles}
+          setHeaderStyles={setHeaderStyles}
           setModuleInView={setModuleInView}
           useViewController={useViewController}
           module_number="CS 1102"
