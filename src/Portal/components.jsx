@@ -35,6 +35,7 @@ export function PortalHomeCard({
               top: "0rem",
               zIndex: 100,
             },
+            moduleHomeHeaderModuleNumberTextColor: "gray",
           });
           setHeaderIsStuck(false);
         }}

@@ -1241,7 +1241,16 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
             color="red"
             css={{ fontFamily: "monospace" }}
           >
-            Are you sure you want to sign out?
+            <Text b size={18} color="primary" css={{ fontFamily: "monospace" }}>
+              {csPortalUser},{" "}
+            </Text>
+            <Text b size={18} color="red" css={{ fontFamily: "monospace" }}>
+              are you sure you want to sign out?
+            </Text>
+            {/* <Text b size={18} color="red" css={{ fontFamily: "monospace" }}>
+              {" "}
+              ?
+            </Text> */}
           </Text>
         </Modal.Header>
         <Modal.Footer>
@@ -1253,7 +1262,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
             icon={<img src="/CloseSquare.svg" />}
             css={{ color: "black" }}
           >
-            Close
+            NO
           </Button>
           <Button
             auto
@@ -1270,7 +1279,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
             css={{ color: "black" }}
             // onPress={logoutFunction}
           >
-            Sign Out
+            YES
           </Button>
         </Modal.Footer>
       </Modal>
