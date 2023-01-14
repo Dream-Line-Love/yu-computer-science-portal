@@ -305,7 +305,7 @@ export function ModuleHome({
         >
           Notes
         </Badge>
-        <Badge
+        {/* <Badge
           size="lg"
           isSquared
           enableShadow
@@ -315,7 +315,7 @@ export function ModuleHome({
           }}
         >
           Tutorials
-        </Badge>
+        </Badge> */}
       </div>
 
       {contentChoice === "Notes" && (

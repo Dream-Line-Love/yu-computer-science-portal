@@ -34,8 +34,14 @@ function App() {
     initializeApp();
   }, []);
 
+  window.oncontextmenu = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
+  };
+
   return (
-    <>
+    <div style={{ WebkitTouchCallout: "none" }}>
       {renderAs === "Auth" && (
         <Auth
           setRenderAs={setRenderAs}
@@ -48,10 +54,11 @@ function App() {
         <Portal
           setRenderAs={setRenderAs}
           csPortalUser={csPortalUser}
+          // avatarURL={avatarURL}
           setAvatarURL={setAvatarURL}
         />
       )}
-    </>
+    </div>
   );
 }
 

@@ -1257,18 +1257,9 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
           <Button
             auto
             flat
-            color="success"
-            onPress={handleCloseLogoutModal}
-            icon={<img src="/CloseSquare.svg" />}
-            css={{ color: "black" }}
-          >
-            NO
-          </Button>
-          <Button
-            auto
-            flat
             color="error"
-            iconRight={<img src="/Logout.svg" />}
+            icon={<img src="/Logout.svg" />}
+            // iconRight={<img src="/Logout.svg" />}
             onPress={() => {
               window.scrollTo({ top: 0, left: 0 });
               localStorage.removeItem("csPortalUser");
@@ -1279,7 +1270,18 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
             css={{ color: "black" }}
             // onPress={logoutFunction}
           >
-            YES
+            Yes
+          </Button>
+          <Button
+            auto
+            flat
+            color="success"
+            onPress={handleCloseLogoutModal}
+            iconRight={<img src="/CloseSquare.svg" />}
+            // icon={<img src="/CloseSquare.svg" />}
+            css={{ color: "black" }}
+          >
+            NO
           </Button>
         </Modal.Footer>
       </Modal>
