@@ -1,4 +1,5 @@
-import { Button, Card, Grid, Modal, Row, Text } from "@nextui-org/react";
+import { Badge, Button, Card, Grid, Modal, Row, Text } from "@nextui-org/react";
+import { useState } from "react";
 
 export function PortalHomeCard({
   module,
@@ -102,6 +103,8 @@ export function ModuleHome({
   moduleHomeFirstGridRef,
   coverURL,
 }) {
+  const [contentChoice, setContentChoice] = useState("Notes");
+
   return (
     <div>
       <div
@@ -279,86 +282,124 @@ export function ModuleHome({
         </Card>
       </div>
 
-      <div></div>
-
-      <Grid.Container
-        css={{
-          marginTop: "3rem",
-          // marginTop: "15vh",
-          marginBottom: "2.5rem",
-          //   background: "red",
+      <div
+        style={{
+          maxWidth: "10.5rem",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          marginLeft: "0.5rem",
+          // marginTop: "1rem",
         }}
-        gap={2.5}
-        ref={moduleHomeFirstGridRef}
       >
-        {contents.map((content) => (
-          <Grid
-            key={content.title}
-            xs={12}
-            sm={6}
-            md={4}
-            // css={{
-            //   //   marginBottom: "-10vh",
-            //   width: "100%",
-            //   //   background: "red",
-            //   px: "0.5rem",
-            //   "@sm": {
-            //     p: "5rem",
-            //     // mx: "2.5rem",
-            //   },
-            // }}
-            css={{
-              width: "100%",
-              px: "0.5rem",
-            }}
-          >
-            <Card
-              isPressable
-              isHoverable
-              variant="bordered"
-              //   css={{ mw: "400px" }}
+        <Badge
+          size="lg"
+          isSquared
+          enableShadow
+          color={contentChoice === "Notes" ? "primary" : "neutral"}
+          onClick={() => {
+            setContentChoice("Notes");
+          }}
+        >
+          Notes
+        </Badge>
+        <Badge
+          size="lg"
+          isSquared
+          enableShadow
+          color={contentChoice === "Tutorials" ? "primary" : "neutral"}
+          onClick={() => {
+            setContentChoice("Tutorials");
+          }}
+        >
+          Tutorials
+        </Badge>
+      </div>
+
+      {contentChoice === "Notes" && (
+        <Grid.Container
+          css={{
+            marginTop: "1.5rem",
+            // marginTop: "15vh",
+            marginBottom: "2.5rem",
+            //   background: "red",
+          }}
+          gap={2.5}
+          ref={moduleHomeFirstGridRef}
+        >
+          {contents.map((content) => (
+            <Grid
+              key={content.title}
+              xs={12}
+              sm={6}
+              md={4}
+              // css={{
+              //   //   marginBottom: "-10vh",
+              //   width: "100%",
+              //   //   background: "red",
+              //   px: "0.5rem",
+              //   "@sm": {
+              //     p: "5rem",
+              //     // mx: "2.5rem",
+              //   },
+              // }}
+              css={{
+                width: "100%",
+                px: "0.5rem",
+              }}
             >
-              <Card.Body>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <div>
-                    <Text
-                      size={13.5}
-                      css={{
-                        marginBottom: "0rem",
-                        // fontFamily: "Merriweather, serif",
-                      }}
-                    >
-                      {content.tag}
-                    </Text>
-                    <Text
-                      b
-                      size={15.5}
-                      css={{
-                        fontFamily: "Source Code Pro, serif",
-                      }}
-                    >
-                      {content.title}
-                    </Text>
+              <Card
+                isPressable
+                isHoverable
+                variant="bordered"
+                //   css={{ mw: "400px" }}
+              >
+                <Card.Body>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div>
+                      <Text
+                        size={13.5}
+                        css={{
+                          marginBottom: "0rem",
+                          // fontFamily: "Merriweather, serif",
+                        }}
+                      >
+                        {content.tag}
+                      </Text>
+                      <Text
+                        b
+                        size={15.5}
+                        css={{
+                          fontFamily: "Source Code Pro, serif",
+                        }}
+                      >
+                        {content.title}
+                      </Text>
+                    </div>
+                    <Button
+                      auto
+                      light
+                      rounded
+                      // flat
+                      iconRight={<img src="/ArrowRightSquare.svg" />}
+                    ></Button>
                   </div>
-                  <Button
-                    auto
-                    light
-                    rounded
-                    // flat
-                    iconRight={<img src="/ArrowRightSquare.svg" />}
-                  ></Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </Grid>
-        ))}
-      </Grid.Container>
+                </Card.Body>
+              </Card>
+            </Grid>
+          ))}
+        </Grid.Container>
+      )}
+
+      {/* {contentChoice === "Tutorials" &&
+        
+      } */}
     </div>
   );
 }

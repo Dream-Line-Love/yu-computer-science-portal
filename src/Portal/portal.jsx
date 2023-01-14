@@ -166,6 +166,12 @@ const myan_1001_contents = [
   { tag: "အသုံးချမြန်မာစာ", title: "အနှစ်ချုပ်ရေးသားခြင်း" },
 ];
 
+const myan_1001_filters = [
+  { value: "စကားပြေ", label: "စကားပြေ" },
+  { value: "ကဗျာ", label: "ကဗျာ" },
+  { value: "အသုံးချမြန်မာစာ", label: "အသုံးချမြန်မာစာ" },
+];
+
 const eng_1001_contents = [
   { tag: "UNIT 1", title: "People" },
   { tag: "UNIT 2", title: "Posessions" },
@@ -886,6 +892,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
           module_number="Myan 1001"
           module_name="Myanmar"
           contents={myan_1001_contents}
+          filters={myan_1001_filters}
           moduleHomeFirstGridRef={moduleHomeFirstGridRef}
           coverURL="/pathein-umbrella-1.jpg"
         />
