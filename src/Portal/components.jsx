@@ -307,7 +307,7 @@ export function ModuleHome({
           size="lg"
           isSquared
           enableShadow
-          color={contentChoice === "Tutorials" ? "primary" : "neutral"}
+          color={contentChoice === "Tutorials" ? "success" : "neutral"}
           onClick={() => {
             setContentChoice("Tutorials");
           }}

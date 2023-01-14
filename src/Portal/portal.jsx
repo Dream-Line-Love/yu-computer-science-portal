@@ -10,6 +10,7 @@ import {
   Dropdown,
   Badge,
   Modal,
+  Avatar,
 } from "@nextui-org/react";
 import { useEffect, useRef, useState } from "react";
 import { supabase } from "../../supabase.config";
@@ -166,12 +167,6 @@ const myan_1001_contents = [
   { tag: "အသုံးချမြန်မာစာ", title: "အနှစ်ချုပ်ရေးသားခြင်း" },
 ];
 
-const myan_1001_filters = [
-  { value: "စကားပြေ", label: "စကားပြေ" },
-  { value: "ကဗျာ", label: "ကဗျာ" },
-  { value: "အသုံးချမြန်မာစာ", label: "အသုံးချမြန်မာစာ" },
-];
-
 const eng_1001_contents = [
   { tag: "UNIT 1", title: "People" },
   { tag: "UNIT 2", title: "Posessions" },
@@ -253,11 +248,14 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
     const { data } = supabase.storage
       .from("avatars")
       .getPublicUrl(`public/${avatarFilePath}.jpg`);
-    setAvatarURL(data);
+    setAvatarURL(data.publicUrl);
+    setAvatarUrl(data.publicUrl);
   };
   useEffect(() => {
     getAvatarURL();
   }, []);
+
+  const [avatarUrl, setAvatarUrl] = useState("");
 
   // Header Stuck and Unstuck Logic
   const [headerIsStuck, setHeaderIsStuck] = useState(false);
@@ -579,10 +577,26 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
                 // size={22.5}
                 color="white"
                 weight="bold"
-                css={{ marginTop: "0.575rem" }}
+                css={{ marginTop: "0.85rem" }}
+                // css={{ marginTop: "0.575rem" }}
               >
                 Computer Science Portal
               </Text>
+              <Avatar
+                src={avatarUrl}
+                // size="lg"
+                // squared
+                bordered
+                color="primary"
+                zoomed
+                css={{
+                  marginLeft: "0.8rem",
+                  // marginTop: "0.4rem",
+                  marginTop: "0.35rem",
+                  // size: "$15",
+                  size: "$16",
+                }}
+              />
             </Text>
           </div>
           <Grid.Container
@@ -591,6 +605,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
             justify="center"
           >
             <PortalHomeCard
+              setHeaderIsStuck={setHeaderIsStuck}
               module="Myan 1001"
               setHeaderStyles={setHeaderStyles}
               setModuleInView={setModuleInView}
@@ -600,6 +615,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               fadedTitle="1001"
             />
             <PortalHomeCard
+              setHeaderIsStuck={setHeaderIsStuck}
               module="Eng 1001"
               setHeaderStyles={setHeaderStyles}
               setModuleInView={setModuleInView}
@@ -609,6 +625,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               fadedTitle="1001"
             />
             <PortalHomeCard
+              setHeaderIsStuck={setHeaderIsStuck}
               module="Maths 1001"
               setHeaderStyles={setHeaderStyles}
               setModuleInView={setModuleInView}
@@ -620,6 +637,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               // fadedTitle="Mathematics"
             />
             <PortalHomeCard
+              setHeaderIsStuck={setHeaderIsStuck}
               module="AM 1001"
               setHeaderStyles={setHeaderStyles}
               setModuleInView={setModuleInView}
@@ -633,6 +651,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               // fadedTitle="&nbsp;1001"
             />
             <PortalHomeCard
+              setHeaderIsStuck={setHeaderIsStuck}
               module="CS 1101"
               setHeaderStyles={setHeaderStyles}
               setModuleInView={setModuleInView}
@@ -645,6 +664,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
               // fadedTitle="&nbsp;Computing Fundamentals Part (I)"
             />
             <PortalHomeCard
+              setHeaderIsStuck={setHeaderIsStuck}
               module="CS 1102"
               setHeaderStyles={setHeaderStyles}
               setModuleInView={setModuleInView}
@@ -892,7 +912,6 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
           module_number="Myan 1001"
           module_name="Myanmar"
           contents={myan_1001_contents}
-          filters={myan_1001_filters}
           moduleHomeFirstGridRef={moduleHomeFirstGridRef}
           coverURL="/pathein-umbrella-1.jpg"
         />
