@@ -95,9 +95,12 @@ export function PortalHomeCard({
 
 export function ModuleHome({
   headerIsStuck,
+  setHeaderIsStuck,
   headerStyles,
   setHeaderStyles,
   setModuleInView,
+  setContentInViewTitle,
+  setContentInViewTag,
   useViewController,
   module_number,
   module_name,
@@ -216,7 +219,10 @@ export function ModuleHome({
           marginBottom: "15vh",
         }}
       >
-        <Card css={{ w: "100%", h: "400px", maxWidth: "75rem" }}>
+        <Card
+          // draggable="false"
+          css={{ w: "100%", h: "400px", maxWidth: "75rem" }}
+        >
           <Card.Body css={{ p: 0 }}>
             <Card.Image
               src={coverURL}
@@ -354,6 +360,31 @@ export function ModuleHome({
                 isPressable
                 isHoverable
                 variant="bordered"
+                onPress={() => {
+                  setHeaderStyles({
+                    headerDivStyles: {
+                      width: "100vw",
+                      marginTop: "-0.25rem",
+                      marginLeft: "-8.5vw",
+                      paddingLeft: "7.5vw",
+                      paddingBottom: "0vh",
+                      paddingTop: "0.35rem",
+                      position: "sticky",
+                      top: "0rem",
+                      zIndex: 100,
+                    },
+                    moduleHomeHeaderModuleNumberTextColor: "gray",
+                  });
+                  setHeaderIsStuck(false);
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                  });
+                  setContentInViewTag(content.tag);
+                  setContentInViewTitle(content.title);
+                  useViewController("Content Home");
+                  console.log("It reached here!", content.title);
+                }}
                 //   css={{ mw: "400px" }}
               >
                 <Card.Body>
@@ -402,6 +433,145 @@ export function ModuleHome({
       {/* {contentChoice === "Tutorials" &&
         
       } */}
+    </div>
+  );
+}
+
+export function ContentHome({
+  headerIsStuck,
+  setHeaderIsStuck,
+  headerStyles,
+  setHeaderStyles,
+  setContentInViewTitle,
+  setContentInViewTag,
+  useViewController,
+  tag,
+  title,
+}) {
+  const handleExitContentHome = () => {
+    window.scrollTo({ top: 0, left: 0 });
+    setContentInViewTag("");
+    setContentInViewTitle("");
+    useViewController("Module Home");
+    setHeaderStyles({
+      headerDivStyles: {
+        width: "100vw",
+        marginTop: "-0.25rem",
+        marginLeft: "-8.5vw",
+        paddingLeft: "7.5vw",
+        paddingBottom: "0vh",
+        paddingTop: "0.35rem",
+        position: "sticky",
+        top: "0rem",
+        zIndex: 100,
+      },
+      moduleHomeHeaderModuleNumberTextColor: "gray",
+    });
+    setHeaderIsStuck(false);
+  };
+  return (
+    <div style={{ height: "200rem" }}>
+      <div style={headerStyles.headerDivStyles}>
+        <div
+          style={{
+            display: "inline-flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "82.5vw",
+            paddingBottom: "0.65em",
+          }}
+        >
+          <Button
+            auto
+            flat
+            shadow
+            rounded={headerIsStuck ? true : false}
+            icon={
+              headerIsStuck ? (
+                <img src="/ArrowUpSquare.svg" />
+              ) : (
+                <img src="/ArrowLeftSquare.svg" />
+              )
+            }
+            onPress={() => {
+              if (headerIsStuck) {
+                window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+              } else {
+                handleExitContentHome();
+              }
+            }}
+            color={headerIsStuck ? "primary" : "success"}
+            css={{ marginRight: "0.5rem", marginTop: "0.25rem" }}
+          />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              // paddingTop: "rem",
+            }}
+          >
+            <Text
+              size={13.5}
+              css={{
+                marginTop: "-0.4rem",
+                marginBottom: "0.25rem",
+                fontFamily: "monospace",
+              }}
+            >
+              {tag}
+            </Text>
+            <Text
+              size={15.5}
+              weight="bold"
+              css={{
+                marginBottom: "-0.5rem",
+                fontFamily: "monospace",
+                textAlign: "center",
+                marginTop: "-0.35rem",
+                lineHeight: "1.15rem",
+              }}
+            >
+              {title}
+            </Text>
+            {/* <Text
+              h1
+              size={13.5}
+              // color="black"
+              // weight="bold"
+              css={{
+                display: "inline-flex",
+                marginBottom: "-0.25rem",
+                fontFamily: "Source Code Pro, monospace",
+                textTransform: "uppercase",
+                // "@sm": {
+                //   fontSize: 36,
+                // },
+              }}
+            >
+              {tag}
+            </Text> */}
+            {/* <Text
+              h1
+              size={14}
+              color="black"
+              weight="bold"
+              css={{
+                display: "inline-flex",
+                marginBottom: "-0.25rem",
+                fontFamily: "Source Code Pro, monospace",
+                textTransform: "uppercase",
+                "@sm": {
+                  fontSize: 36,
+                },
+              }}
+            >
+              {title}
+            </Text> */}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -610,4 +780,241 @@ export function ModuleHome({
                         )}
                     </Grid.Container>
                   ))} */
+}
+
+{
+  /* <Grid xs={6} sm={4}>
+              <Card
+                isPressable
+                onPress={() => {
+                  setModuleInView("Myan 1001");
+                  useViewController("Module Home");
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                  });
+                }}
+              >
+                <Card.Body css={{ p: 0 }}>
+                  <Card.Image
+                    src={"/pathein-umbrella-1.jpg"}
+                    objectFit="cover"
+                    width="100%"
+                    height={140}
+                    alt="Subjects"
+                  />
+                </Card.Body>
+                <Card.Footer css={{ justifyItems: "flex-start" }}>
+                  <Row wrap="wrap" justify="space-between" align="center">
+                    <Text b>Myanmar</Text>
+                    <Text
+                      css={{
+                        color: "$accents7",
+                        fontWeight: "$semibold",
+                        fontSize: "$sm",
+                      }}
+                    >
+                      1001
+                    </Text>
+                  </Row>
+                </Card.Footer>
+              </Card>
+            </Grid> */
+}
+{
+  /* <Grid xs={6} sm={4}>
+              <Card
+                isPressable
+                onPress={() => {
+                  setModuleInView("Eng 1001");
+                  useViewController("Module Home");
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                  });
+                }}
+              >
+                <Card.Body css={{ p: 0 }}>
+                  <Card.Image
+                    src={"/english-language-1.jpg"}
+                    objectFit="fill"
+                    width="100%"
+                    height={140}
+                    alt="Subjects"
+                  />
+                </Card.Body>
+                <Card.Footer css={{ justifyItems: "flex-start" }}>
+                  <Row wrap="wrap" justify="space-between" align="center">
+                    <Text b>English</Text>
+                    <Text
+                      css={{
+                        color: "$accents7",
+                        fontWeight: "$semibold",
+                        fontSize: "$sm",
+                      }}
+                    >
+                      1001
+                    </Text>
+                  </Row>
+                </Card.Footer>
+              </Card>
+            </Grid> */
+}
+{
+  /* <Grid xs={6} sm={4}>
+              <Card
+                isPressable
+                onPress={() => {
+                  setModuleInView("Maths 1001");
+                  useViewController("Module Home");
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                  });
+                }}
+              >
+                <Card.Body css={{ p: 0 }}>
+                  <Card.Image
+                    src={"/mathematics-2.png"}
+                    objectFit="cover"
+                    width="100%"
+                    height={140}
+                    alt="Subjects"
+                  />
+                </Card.Body>
+                <Card.Footer css={{ justifyItems: "flex-start" }}>
+                  <Row wrap="wrap" justify="space-between" align="center">
+                    <Text b>Maths 1001</Text>
+                    <Text
+                      css={{
+                        color: "$accents7",
+                        fontWeight: "$semibold",
+                        fontSize: "$sm",
+                      }}
+                    >
+                      Mathematics
+                    </Text>
+                  </Row>
+                </Card.Footer>
+              </Card>
+            </Grid> */
+}
+{
+  /* <Grid xs={6} sm={4}>
+              <Card
+                isPressable
+                onPress={() => {
+                  setModuleInView("AM 1001");
+                  useViewController("Module Home");
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                  });
+                }}
+              >
+                <Card.Body css={{ p: 0 }}>
+                  <Card.Image
+                    src={"/myanmar-independence-1.jpg"}
+                    objectFit="cover"
+                    width="100%"
+                    height={140}
+                    alt="Subjects"
+                  />
+                </Card.Body>
+                <Card.Footer css={{ justifyItems: "flex-start" }}>
+                  <Row wrap="wrap" justify="space-between" align="center">
+                    <Text b css={{ display: "inline-flex" }}>
+                      Aspects of Myanmar{" "}
+                      <Text
+                        css={{
+                          color: "$accents7",
+                          fontWeight: "$semibold",
+                          fontSize: "$sm",
+                        }}
+                      >
+                        &nbsp;1001
+                      </Text>
+                    </Text>
+                  </Row>
+                </Card.Footer>
+              </Card>
+            </Grid> */
+}
+{
+  /* <Grid xs={6} sm={4}>
+              <Card
+                isPressable
+                onPress={() => {
+                  setModuleInView("CS 1101");
+                  useViewController("Module Home");
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                  });
+                }}
+              >
+                <Card.Body css={{ p: 0 }}>
+                  <Card.Image
+                    src={"/computing-1.jpg"}
+                    objectFit="cover"
+                    width="100%"
+                    height={140}
+                    alt="Subjects"
+                  />
+                </Card.Body>
+                <Card.Footer css={{ justifyItems: "flex-start" }}>
+                  <Row wrap="wrap" justify="space-between" align="center">
+                    <Text b>CS 1101</Text>
+                    <Text
+                      css={{
+                        color: "$accents7",
+                        fontWeight: "$semibold",
+                        fontSize: "$sm",
+                      }}
+                    >
+                      &nbsp;Computing Fundamentals Part (I)
+                    </Text>
+                  </Row>
+                </Card.Footer>
+              </Card>
+            </Grid> */
+}
+{
+  /* <Grid xs={6} sm={4}>
+              <Card
+                isPressable
+                onPress={() => {
+                  setModuleInView("CS 1102");
+                  useViewController("Module Home");
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                  });
+                }}
+              >
+                <Card.Body css={{ p: 0 }}>
+                  <Card.Image
+                    src={"/cs-image-1.jpg"}
+                    objectFit="cover"
+                    width="100%"
+                    height={140}
+                    alt="Subjects"
+                  />
+                </Card.Body>
+                <Card.Footer css={{ justifyItems: "flex-start" }}>
+                  <Row wrap="wrap" justify="space-between" align="center">
+                    <Text b>CS 1102</Text>
+                    <Text
+                      css={{
+                        color: "$accents7",
+                        fontWeight: "$semibold",
+                        fontSize: "$sm",
+                      }}
+                    >
+                      Program Development Methodology I
+                    </Text>
+                  </Row>
+                </Card.Footer>
+              </Card>
+            </Grid> */
 }
