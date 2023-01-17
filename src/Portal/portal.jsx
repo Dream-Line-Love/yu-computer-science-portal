@@ -693,6 +693,7 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
           contents={myan_1001_contents}
           moduleHomeFirstGridRef={moduleHomeFirstGridRef}
           coverURL="/pathein-umbrella-1.jpg"
+          csPortalUser={csPortalUser}
         />
       )}
       {portalView === "Module Home" && moduleInView === "Eng 1001" && (
@@ -791,16 +792,11 @@ export function Portal({ setRenderAs, csPortalUser, setAvatarURL }) {
           useViewController={useViewController}
           tag={contentInViewTag}
           title={contentInViewTitle}
+          csPortalUser={csPortalUser}
+          avatarUrl={avatarUrl}
         />
       )}
-      {/* <Spacer y={5} /> */}
-      {/* <Spacer y={5} /> */}
       <Spacer y={0.5} />
-      {/* <LogoutModal
-        logoutModalIsVisible={logoutModalIsVisible}
-        handleCloseLogoutModal={handleCloseLogoutModal}
-        logoutFunction={logoutFunction}
-      /> */}
       <Modal
         blur
         closeButton

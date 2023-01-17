@@ -1,5 +1,14 @@
-import { Badge, Button, Card, Grid, Modal, Row, Text } from "@nextui-org/react";
-import { useState } from "react";
+import {
+  Badge,
+  Button,
+  Card,
+  Grid,
+  Modal,
+  Row,
+  Text,
+  User,
+} from "@nextui-org/react";
+import { useEffect, useState } from "react";
 
 export function PortalHomeCard({
   module,
@@ -447,7 +456,26 @@ export function ContentHome({
   useViewController,
   tag,
   title,
+  csPortalUser,
+  avatarUrl,
 }) {
+  // Modal type "Photos"
+  const [selectedPhotos, setSelectedPhotos] = useState([]);
+  const [selectedPhotosLimitHasExceeded, setSelectedPhotosLimitHasExceeded] =
+    useState(false);
+  const [uploadModalIsVisible, setUploadModalIsVisible] = useState(false);
+  const handleOpenUploadModal = (modalType) => {
+    setModalType(modalType);
+    setUploadModalIsVisible(true);
+  };
+  const handleCloseUploadModal = () => {
+    setModalType("");
+    setSelectedPhotos([]);
+    setSelectedPhotosLimitHasExceeded(false);
+    setUploadModalIsVisible(false);
+  };
+  const [modalType, setModalType] = useState("");
+
   const handleExitContentHome = () => {
     window.scrollTo({ top: 0, left: 0 });
     setContentInViewTag("");
@@ -469,6 +497,7 @@ export function ContentHome({
     });
     setHeaderIsStuck(false);
   };
+
   return (
     <div style={{ height: "200rem" }}>
       <div style={headerStyles.headerDivStyles}>
@@ -572,7 +601,311 @@ export function ContentHome({
           </div>
         </div>
       </div>
+      <div
+        style={{
+          position: "fixed",
+          left: 0,
+          bottom: 0,
+          paddingTop: "0.75rem",
+          paddingBottom: "0.5rem",
+          // transform: "translateX(-50%)",
+          // marginTop: "10rem",
+          // marginBottom: "-1rem",
+          // marginLeft: "0.25rem",
+          // marginLeft: "-1.25rem",
+          // marginBottom: "0rem",
+          width: "100vw",
+          height: "fit-content",
+          zIndex: 100,
+          WebkitBackdropFilter: "saturate(180%) blur(100px)",
+          backdropFilter: "saturate(180%) blur(100px)",
+          // backgroundColor: "gray",
+          display: "flex",
+          direction: "row",
+          justifyContent: "center",
+          // justifyContent: "space-around",
+          alignItems: "center",
+          overflow: "auto",
+          // borderRadius: "0.75rem",
+        }}
+      >
+        {/* <Text
+          size={18}
+          css={{
+            textTransform: "uppercase",
+            fontFamily: "monospace",
+            color: "white",
+          }}
+        >
+          Upload:
+        </Text> */}
+        <Button
+          flat
+          auto
+          color="primary"
+          iconRight={<img src="Filter2.svg" />}
+          // css={{ color: "black" }}
+          css={{ marginRight: "0.5rem" }}
+        />
+        <Button
+          flat
+          auto
+          color="secondary"
+          icon={<img src="Image.svg" />}
+          // css={{ color: "black" }}
+          css={{ marginRight: "0.5rem" }}
+          onPress={() => {
+            handleOpenUploadModal("Photos");
+          }}
+        />
+        <Button
+          flat
+          auto
+          color="success"
+          icon={<img src="Voice.svg" />}
+          // css={{ color: "black" }}
+          css={{ marginRight: "0.5rem" }}
+        />
+        <Button
+          flat
+          auto
+          color="warning"
+          icon={<img src="Paper.svg" />}
+          // css={{ color: "black" }}
+          css={{ marginRight: "0.5rem" }}
+        />
+      </div>
+      <UploadModal
+        modalType={modalType}
+        uploadModalIsVisible={uploadModalIsVisible}
+        handleCloseUploadModal={handleCloseUploadModal}
+        selectedPhotos={selectedPhotos}
+        setSelectedPhotos={setSelectedPhotos}
+        selectedPhotosLimitHasExceeded={selectedPhotosLimitHasExceeded}
+        setSelectedPhotosLimitHasExceeded={setSelectedPhotosLimitHasExceeded}
+        csPortalUser={csPortalUser}
+        avatarUrl={avatarUrl}
+      />
     </div>
+  );
+}
+
+function UploadModal({
+  modalType,
+  uploadModalIsVisible,
+  handleCloseUploadModal,
+  selectedPhotos,
+  setSelectedPhotos,
+  selectedPhotosLimitHasExceeded,
+  setSelectedPhotosLimitHasExceeded,
+  csPortalUser,
+  avatarUrl,
+}) {
+  const handlePhotosUpload = (chosenPhotos) => {
+    const chosen = [...selectedPhotos];
+    let limitExceeded = false;
+    const MAX_COUNT = 15;
+
+    chosenPhotos.some((chosenPhoto) => {
+      if (chosen.findIndex((f) => f.name === chosenPhoto.name) === -1) {
+        chosen.push(chosenPhoto);
+        if (chosen.length === MAX_COUNT)
+          setSelectedPhotosLimitHasExceeded(true);
+        if (chosen.length > MAX_COUNT) {
+          alert(`You can only choose a maximum of ${MAX_COUNT} photos`);
+          setSelectedPhotosLimitHasExceeded(false);
+          limitExceeded = true;
+          return true;
+        }
+      }
+    });
+    if (!limitExceeded) setSelectedPhotos(chosen);
+  };
+
+  const handlePhotosInput = (event) => {
+    const chosenPhotos = Array.prototype.slice.call(event.target.files);
+    handlePhotosUpload(chosenPhotos);
+  };
+
+  return (
+    <Modal
+      // blur
+      fullScreen
+      scroll
+      // closeButton
+      aria-labelledby="modal-title"
+      open={uploadModalIsVisible}
+      onClose={handleCloseUploadModal}
+      css={{ WebkitUserSelect: "none", userSelect: "none" }}
+    >
+      <Modal.Header>
+        {modalType === "Photos" && (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <Button
+              color="neutral"
+              light
+              auto
+              icon={<img src="CloseSquare_Light.svg" />}
+              onPress={handleCloseUploadModal}
+              style={{
+                marginTop: "-2.95rem",
+                marginLeft: "-0.75rem",
+              }}
+            />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
+                marginRight: "-2.4rem",
+                justifyContent: "space-between",
+                // background: "red",
+              }}
+            >
+              <Text
+                b
+                id="modal-title"
+                size={20}
+                weight="bold"
+                // size={30}
+                css={{
+                  marginTop: "-2.5rem",
+                  marginBottom: "0.5rem",
+                  // textTransform: "uppercase",
+                  // fontFamily: "monospace",
+                }}
+              >
+                Create Post
+              </Text>
+              <hr
+                width="140%"
+                style={{ marginLeft: "-3.5rem", marginTop: "0.5rem" }}
+              />
+            </div>
+            <Button
+              color={selectedPhotos.length > 0 ? "secondary" : "neutral"}
+              auto
+              // iconRight={<img src="/ArrowRightSquare.svg" />}
+              flat
+              css={{
+                fontSize: "$md",
+                marginRight: "-0.5rem",
+                marginBottom: "3rem",
+                color: "black",
+              }}
+              disabled={
+                selectedPhotos.length > 0 && selectedPhotos.length < 16
+                  ? false
+                  : true
+              }
+            >
+              POST
+            </Button>
+          </div>
+        )}
+      </Modal.Header>
+      <Modal.Body
+        css={{
+          display: "flex",
+          flexDirection: "column",
+          // justifyContent: "space-a",
+          // alignItems: "center",
+          marginTop: "-3.25rem",
+          // background: "red",
+        }}
+      >
+        <User
+          src={avatarUrl}
+          name={csPortalUser}
+          style={{ marginLeft: "-1rem", marginTop: "0.5rem" }}
+          size="md"
+          description="First Year, First Semester"
+        />
+        {modalType === "Photos" && (
+          <div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Button
+                color={selectedPhotos.length > 0 ? "success" : "secondary"}
+                auto
+                iconRight={
+                  selectedPhotos.length > 0 ? (
+                    <img src="/TickSquare.svg" />
+                  ) : (
+                    <img src="/Image.svg" />
+                  )
+                }
+                flat
+                css={{ fontSize: "$md", marginRight: "0.5rem", color: "black" }}
+                disabled={selectedPhotosLimitHasExceeded}
+              >
+                {selectedPhotos.length === 0 &&
+                  selectedPhotos.length <= 15 &&
+                  "Select"}
+                {selectedPhotosLimitHasExceeded === true &&
+                  `15 Photos selected`}
+                {selectedPhotos.length > 0 &&
+                  selectedPhotosLimitHasExceeded !== true &&
+                  `${selectedPhotos.length}/15 Photos`}
+                <input
+                  style={{ position: "absolute", opacity: 0 }}
+                  type="file"
+                  multiple
+                  name="photosUpload"
+                  id="photosUpload"
+                  accept="image/png, image/jpeg"
+                  onChange={handlePhotosInput}
+                  disabled={selectedPhotosLimitHasExceeded}
+                />
+              </Button>
+              {selectedPhotos.length === 15 && (
+                <Button
+                  color="error"
+                  flat
+                  auto
+                  icon={<img src="CloseSquare.svg" />}
+                  onPress={() => {
+                    setSelectedPhotos([]);
+                    setSelectedPhotosLimitHasExceeded(false);
+                  }}
+                />
+              )}
+            </div>
+          </div>
+        )}
+      </Modal.Body>
+      {/* <Modal.Footer>
+        {modalType === "Photos" && (
+          <Button
+            color={selectedPhotos.length > 0 ? "secondary" : "neutral"}
+            auto
+            iconRight={<img src="/ArrowRightSquare.svg" />}
+            flat
+            css={{ fontSize: "$md", marginRight: "0.5rem", color: "black" }}
+            disabled={
+              selectedPhotos.length > 0 && selectedPhotos.length < 16
+                ? false
+                : true
+            }
+          >
+            POST
+          </Button>
+        )}
+      </Modal.Footer> */}
+    </Modal>
   );
 }
 
