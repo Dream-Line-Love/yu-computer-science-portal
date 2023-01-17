@@ -470,12 +470,12 @@ export function ContentHome({
     setUploadModalIsVisible(true);
   };
   const handleCloseUploadModal = () => {
-    // setModalType("");
+    setUploadType("");
     setSelectedPhotos([]);
     setSelectedPhotosLimitHasExceeded(false);
     setUploadModalIsVisible(false);
   };
-  // const [modalType, setModalType] = useState("");
+  const [uploadType, setUploadType] = useState("");
 
   const handleExitContentHome = () => {
     window.scrollTo({ top: 0, left: 0 });
@@ -498,6 +498,18 @@ export function ContentHome({
     });
     setHeaderIsStuck(false);
   };
+
+  const [windowWidth, setWindowWidth] = useState();
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    console.log(window.innerWidth);
+  }, []);
+
+  const handleModalSize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+  addEventListener("resize", handleModalSize);
 
   return (
     <div style={{ height: "200rem" }}>
@@ -608,7 +620,7 @@ export function ContentHome({
           left: 0,
           bottom: 0,
           paddingTop: "0.75rem",
-          paddingBottom: "2rem",
+          paddingBottom: "2.5rem",
           // transform: "translateX(-50%)",
           // marginTop: "10rem",
           // marginBottom: "-1rem",
@@ -689,7 +701,8 @@ export function ContentHome({
         /> */}
       </div>
       <UploadModal
-        // modalType={modalType}
+        uploadType={uploadType}
+        setUploadType={setUploadType}
         uploadModalIsVisible={uploadModalIsVisible}
         handleCloseUploadModal={handleCloseUploadModal}
         selectedPhotos={selectedPhotos}
@@ -698,13 +711,15 @@ export function ContentHome({
         setSelectedPhotosLimitHasExceeded={setSelectedPhotosLimitHasExceeded}
         csPortalUser={csPortalUser}
         avatarUrl={avatarUrl}
+        windowWidth={windowWidth}
       />
     </div>
   );
 }
 
 function UploadModal({
-  // modalType,
+  uploadType,
+  setUploadType,
   uploadModalIsVisible,
   handleCloseUploadModal,
   selectedPhotos,
@@ -713,6 +728,7 @@ function UploadModal({
   setSelectedPhotosLimitHasExceeded,
   csPortalUser,
   avatarUrl,
+  windowWidth,
 }) {
   const handlePhotosUpload = (chosenPhotos) => {
     const chosen = [...selectedPhotos];
@@ -743,7 +759,7 @@ function UploadModal({
   return (
     <Modal
       // blur
-      fullScreen
+      fullScreen={windowWidth > 768 ? false : true}
       scroll
       // closeButton
       aria-labelledby="modal-title"
@@ -793,6 +809,10 @@ function UploadModal({
                 marginTop: "-2.15rem",
                 marginBottom: "0.5rem",
                 marginLeft: "-1.75rem",
+                "@sm": {
+                  fontSize: 20,
+                  marginTop: "-2.1rem",
+                },
                 // textTransform: "uppercase",
                 // fontFamily: "monospace",
               }}
@@ -816,6 +836,10 @@ function UploadModal({
               color: "black",
               paddingLeft: "0.75rem",
               paddingRight: "0.75rem",
+              "@sm": {
+                fontSize: 16,
+                // iconRight: <img src="/ArrowRightSquare.svg" />,
+              },
               // paddingTop: "-0.5rem",
             }}
             disabled={
@@ -847,7 +871,7 @@ function UploadModal({
           description="First Year, First Semester"
         />
         {/* {modalType === "Photos" && ( */}
-        <div>
+        <div style={{ maxWidth: "50rem" }}>
           <div
             style={{
               display: "flex",
@@ -873,6 +897,7 @@ function UploadModal({
                 width: "80%",
               }}
               disabled={selectedPhotosLimitHasExceeded}
+              onPress={() => setUploadType("Photos")}
             >
               {selectedPhotos.length === 0 &&
                 selectedPhotos.length <= 15 &&
@@ -892,7 +917,20 @@ function UploadModal({
                 disabled={selectedPhotosLimitHasExceeded}
               />
             </Button>
-            {selectedPhotos.length === 15 && (
+            {uploadType === "Photos" && (
+              <Button
+                color="error"
+                flat
+                auto
+                icon={<img src="CloseSquare.svg" />}
+                onPress={() => {
+                  setUploadType("");
+                  setSelectedPhotos([]);
+                  setSelectedPhotosLimitHasExceeded(false);
+                }}
+              />
+            )}
+            {/* {selectedPhotos.length === 15 && (
               <Button
                 color="error"
                 flat
@@ -903,7 +941,7 @@ function UploadModal({
                   setSelectedPhotosLimitHasExceeded(false);
                 }}
               />
-            )}
+            )} */}
           </div>
         </div>
         {/* )} */}
