@@ -161,6 +161,7 @@ export function Auth({ setRenderAs, studentList, setCsPortalUser }) {
           setTimeout(() => {
             window.scrollTo({ top: 0, left: 0 });
             setRenderAs("Portal");
+            // supabase.removeChannel("public:users");
           }, 500);
         }
       }

@@ -1,5 +1,5 @@
 // import { collection, getDocs } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // import { db } from "../firebase.config";
 import "./App.css";
 import { Portal } from "./Portal/portal";
@@ -13,17 +13,55 @@ function App() {
 
   const [csPortalUser, setCsPortalUser] = useState("");
   const [avatarURL, setAvatarURL] = useState("");
+  const handleStudentListCounter = useRef(0);
+
+  const handleStudentList = async () => {
+    const { data, error } = await supabase
+      .from("users")
+      .select()
+      .neq("full_name", "Admin")
+      .eq("semester", "first semester")
+      .eq("year", "first year");
+    if (error) throw error;
+    if (data) {
+      setStudentList(data);
+      if (handleStudentListCounter.current === 0) {
+        handleStudentListCounter.current += 1;
+        console.log("Useref value is reached.");
+        setRenderAs("Auth");
+      } else {
+        // console.log("Only returned false yay!!");
+        return false;
+      }
+    }
+  };
 
   const initializeApp = async () => {
     const existingUser = localStorage.getItem("csPortalUser");
     if (!existingUser) {
-      const { data, error } = await supabase
-        .from("users")
-        .select()
-        .neq("full_name", "Admin");
-      if (error) throw error;
-      setStudentList(data);
-      setRenderAs("Auth");
+      // const { data, error } = await supabase
+      //   .from("users")
+      //   .select()
+      //   .neq("full_name", "Admin")
+      //   .eq("semester", "first semester")
+      //   .eq("year", "first year");
+      // if (error) throw error;
+      // setStudentList(data);
+      handleStudentList();
+      // if (handleStudentList === true) {
+      //   setRenderAs("Auth");
+      // }
+      supabase
+        .channel("public:users")
+        .on(
+          "postgres_changes",
+          { event: "*", schema: "public", table: "users" },
+          (payload) => {
+            console.log(payload);
+            handleStudentList();
+          }
+        )
+        .subscribe();
     } else {
       setCsPortalUser(existingUser);
       setRenderAs("Portal");
