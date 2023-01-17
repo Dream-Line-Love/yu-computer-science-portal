@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Badge,
   Button,
   Card,
@@ -464,17 +465,17 @@ export function ContentHome({
   const [selectedPhotosLimitHasExceeded, setSelectedPhotosLimitHasExceeded] =
     useState(false);
   const [uploadModalIsVisible, setUploadModalIsVisible] = useState(false);
-  const handleOpenUploadModal = (modalType) => {
-    setModalType(modalType);
+  const handleOpenUploadModal = () => {
+    // setModalType(modalType);
     setUploadModalIsVisible(true);
   };
   const handleCloseUploadModal = () => {
-    setModalType("");
+    // setModalType("");
     setSelectedPhotos([]);
     setSelectedPhotosLimitHasExceeded(false);
     setUploadModalIsVisible(false);
   };
-  const [modalType, setModalType] = useState("");
+  // const [modalType, setModalType] = useState("");
 
   const handleExitContentHome = () => {
     window.scrollTo({ top: 0, left: 0 });
@@ -607,7 +608,7 @@ export function ContentHome({
           left: 0,
           bottom: 0,
           paddingTop: "0.75rem",
-          paddingBottom: "1.5rem",
+          paddingBottom: "2rem",
           // transform: "translateX(-50%)",
           // marginTop: "10rem",
           // marginBottom: "-1rem",
@@ -622,24 +623,36 @@ export function ContentHome({
           // backgroundColor: "gray",
           display: "flex",
           direction: "row",
-          justifyContent: "center",
+          paddingLeft: "1.5rem",
+          // justifyContent: "center",
           // justifyContent: "space-around",
           alignItems: "center",
           overflow: "auto",
           // borderRadius: "0.75rem",
         }}
       >
-        {/* <Text
-          size={18}
-          css={{
-            textTransform: "uppercase",
-            fontFamily: "monospace",
-            color: "white",
-          }}
-        >
-          Upload:
-        </Text> */}
         <Button
+          auto
+          light
+          css={{ width: "100%", marginLeft: "-1.5rem" }}
+          onPress={() => handleOpenUploadModal()}
+        >
+          <Avatar
+            src={avatarUrl}
+            css={{ marginLeft: "-5rem", marginRight: "1rem" }}
+          />
+          <Text
+            size={18}
+            css={{
+              fontFamily: "monospace",
+              color: "white",
+            }}
+          >
+            What's on your mind?
+          </Text>
+        </Button>
+
+        {/* <Button
           flat
           auto
           color="primary"
@@ -655,7 +668,7 @@ export function ContentHome({
           // css={{ color: "black" }}
           css={{ marginRight: "0.5rem" }}
           onPress={() => {
-            handleOpenUploadModal("Photos");
+            handleOpenUploadModal();
           }}
         />
         <Button
@@ -673,10 +686,10 @@ export function ContentHome({
           icon={<img src="Paper.svg" />}
           // css={{ color: "black" }}
           css={{ marginRight: "0.5rem" }}
-        />
+        /> */}
       </div>
       <UploadModal
-        modalType={modalType}
+        // modalType={modalType}
         uploadModalIsVisible={uploadModalIsVisible}
         handleCloseUploadModal={handleCloseUploadModal}
         selectedPhotos={selectedPhotos}
@@ -691,7 +704,7 @@ export function ContentHome({
 }
 
 function UploadModal({
-  modalType,
+  // modalType,
   uploadModalIsVisible,
   handleCloseUploadModal,
   selectedPhotos,
@@ -739,82 +752,82 @@ function UploadModal({
       css={{ WebkitUserSelect: "none", userSelect: "none" }}
     >
       <Modal.Header>
-        {modalType === "Photos" && (
+        {/* {modalType === "Photos" && ( */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Button
+            color="neutral"
+            light
+            auto
+            icon={<img src="CloseSquare_Light.svg" />}
+            onPress={handleCloseUploadModal}
+            style={{
+              marginTop: "-3.2rem",
+              marginLeft: "-0.75rem",
+            }}
+          />
           <div
             style={{
               display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
+              flexDirection: "column",
               width: "100%",
+              marginRight: "-2.4rem",
+              justifyContent: "space-between",
+              // background: "red",
             }}
           >
-            <Button
-              color="neutral"
-              light
-              auto
-              icon={<img src="CloseSquare_Light.svg" />}
-              onPress={handleCloseUploadModal}
-              style={{
-                marginTop: "-3.2rem",
-                marginLeft: "-0.75rem",
-              }}
-            />
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "100%",
-                marginRight: "-2.4rem",
-                justifyContent: "space-between",
-                // background: "red",
-              }}
-            >
-              <Text
-                b
-                id="modal-title"
-                size={16}
-                weight="bold"
-                // size={30}
-                css={{
-                  marginTop: "-2.15rem",
-                  marginBottom: "0.5rem",
-                  marginLeft: "-1.75rem",
-                  // textTransform: "uppercase",
-                  // fontFamily: "monospace",
-                }}
-              >
-                Create Post
-              </Text>
-              <hr
-                width="140%"
-                style={{ marginLeft: "-3.5rem", marginTop: "0.5rem" }}
-              />
-            </div>
-            <Button
-              color={selectedPhotos.length > 0 ? "secondary" : "neutral"}
-              auto
-              // iconRight={<img src="/ArrowRightSquare.svg" />}
-              flat
+            <Text
+              b
+              id="modal-title"
+              size={16}
+              weight="bold"
+              // size={30}
               css={{
-                fontSize: "$md",
-                marginRight: "-0.5rem",
-                marginBottom: "3rem",
-                color: "black",
-                paddingLeft: "0.75rem",
-                paddingRight: "0.75rem",
-                // paddingTop: "-0.5rem",
+                marginTop: "-2.15rem",
+                marginBottom: "0.5rem",
+                marginLeft: "-1.75rem",
+                // textTransform: "uppercase",
+                // fontFamily: "monospace",
               }}
-              disabled={
-                selectedPhotos.length > 0 && selectedPhotos.length < 16
-                  ? false
-                  : true
-              }
             >
-              Post
-            </Button>
+              Create Post
+            </Text>
+            <hr
+              width="140%"
+              style={{ marginLeft: "-3.5rem", marginTop: "0.5rem" }}
+            />
           </div>
-        )}
+          <Button
+            color={selectedPhotos.length > 0 ? "secondary" : "neutral"}
+            auto
+            // iconRight={<img src="/ArrowRightSquare.svg" />}
+            flat
+            css={{
+              fontSize: "$md",
+              marginRight: "-0.5rem",
+              marginBottom: "3rem",
+              color: "black",
+              paddingLeft: "0.75rem",
+              paddingRight: "0.75rem",
+              // paddingTop: "-0.5rem",
+            }}
+            disabled={
+              selectedPhotos.length > 0 && selectedPhotos.length < 16
+                ? false
+                : true
+            }
+          >
+            Post
+          </Button>
+        </div>
+        {/* )} */}
       </Modal.Header>
       <Modal.Body
         css={{
@@ -833,63 +846,67 @@ function UploadModal({
           size="md"
           description="First Year, First Semester"
         />
-        {modalType === "Photos" && (
-          <div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+        {/* {modalType === "Photos" && ( */}
+        <div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Button
+              color={selectedPhotos.length > 0 ? "success" : "secondary"}
+              auto
+              iconRight={
+                selectedPhotos.length > 0 ? (
+                  <img src="/TickSquare.svg" />
+                ) : (
+                  <img src="/Image.svg" />
+                )
+              }
+              flat
+              css={{
+                fontSize: "$md",
+                marginRight: "0.5rem",
+                color: "black",
+                width: "80%",
               }}
+              disabled={selectedPhotosLimitHasExceeded}
             >
-              <Button
-                color={selectedPhotos.length > 0 ? "success" : "secondary"}
-                auto
-                iconRight={
-                  selectedPhotos.length > 0 ? (
-                    <img src="/TickSquare.svg" />
-                  ) : (
-                    <img src="/Image.svg" />
-                  )
-                }
-                flat
-                css={{ fontSize: "$md", marginRight: "0.5rem", color: "black" }}
+              {selectedPhotos.length === 0 &&
+                selectedPhotos.length <= 15 &&
+                "Select Photos"}
+              {selectedPhotosLimitHasExceeded === true && `15 Photos selected`}
+              {selectedPhotos.length > 0 &&
+                selectedPhotosLimitHasExceeded !== true &&
+                `${selectedPhotos.length}/15 Photos`}
+              <input
+                style={{ position: "absolute", opacity: 0 }}
+                type="file"
+                multiple
+                name="photosUpload"
+                id="photosUpload"
+                accept="image/png, image/jpeg"
+                onChange={handlePhotosInput}
                 disabled={selectedPhotosLimitHasExceeded}
-              >
-                {selectedPhotos.length === 0 &&
-                  selectedPhotos.length <= 15 &&
-                  "Select"}
-                {selectedPhotosLimitHasExceeded === true &&
-                  `15 Photos selected`}
-                {selectedPhotos.length > 0 &&
-                  selectedPhotosLimitHasExceeded !== true &&
-                  `${selectedPhotos.length}/15 Photos`}
-                <input
-                  style={{ position: "absolute", opacity: 0 }}
-                  type="file"
-                  multiple
-                  name="photosUpload"
-                  id="photosUpload"
-                  accept="image/png, image/jpeg"
-                  onChange={handlePhotosInput}
-                  disabled={selectedPhotosLimitHasExceeded}
-                />
-              </Button>
-              {selectedPhotos.length === 15 && (
-                <Button
-                  color="error"
-                  flat
-                  auto
-                  icon={<img src="CloseSquare.svg" />}
-                  onPress={() => {
-                    setSelectedPhotos([]);
-                    setSelectedPhotosLimitHasExceeded(false);
-                  }}
-                />
-              )}
-            </div>
+              />
+            </Button>
+            {selectedPhotos.length === 15 && (
+              <Button
+                color="error"
+                flat
+                auto
+                icon={<img src="CloseSquare.svg" />}
+                onPress={() => {
+                  setSelectedPhotos([]);
+                  setSelectedPhotosLimitHasExceeded(false);
+                }}
+              />
+            )}
           </div>
-        )}
+        </div>
+        {/* )} */}
       </Modal.Body>
       {/* <Modal.Footer>
         {modalType === "Photos" && (
