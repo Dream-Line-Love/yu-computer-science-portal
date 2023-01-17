@@ -607,7 +607,7 @@ export function ContentHome({
           left: 0,
           bottom: 0,
           paddingTop: "0.75rem",
-          paddingBottom: "0.5rem",
+          paddingBottom: "1.5rem",
           // transform: "translateX(-50%)",
           // marginTop: "10rem",
           // marginBottom: "-1rem",
@@ -756,7 +756,7 @@ function UploadModal({
               icon={<img src="CloseSquare_Light.svg" />}
               onPress={handleCloseUploadModal}
               style={{
-                marginTop: "-2.95rem",
+                marginTop: "-3.2rem",
                 marginLeft: "-0.75rem",
               }}
             />
@@ -773,12 +773,13 @@ function UploadModal({
               <Text
                 b
                 id="modal-title"
-                size={20}
+                size={16}
                 weight="bold"
                 // size={30}
                 css={{
-                  marginTop: "-2.5rem",
+                  marginTop: "-2.15rem",
                   marginBottom: "0.5rem",
+                  marginLeft: "-1.75rem",
                   // textTransform: "uppercase",
                   // fontFamily: "monospace",
                 }}
@@ -800,6 +801,9 @@ function UploadModal({
                 marginRight: "-0.5rem",
                 marginBottom: "3rem",
                 color: "black",
+                paddingLeft: "0.75rem",
+                paddingRight: "0.75rem",
+                // paddingTop: "-0.5rem",
               }}
               disabled={
                 selectedPhotos.length > 0 && selectedPhotos.length < 16
@@ -807,7 +811,7 @@ function UploadModal({
                   : true
               }
             >
-              POST
+              Post
             </Button>
           </div>
         )}
@@ -825,7 +829,7 @@ function UploadModal({
         <User
           src={avatarUrl}
           name={csPortalUser}
-          style={{ marginLeft: "-1rem", marginTop: "0.5rem" }}
+          style={{ marginLeft: "-1rem", marginTop: "0.25rem" }}
           size="md"
           description="First Year, First Semester"
         />
